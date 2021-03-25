@@ -23,11 +23,12 @@
         color: white;
         padding-top: 10px;
         margin: auto;
-        .login{
+        .login {
+            font-size: 30px;
             text-decoration: none;
+            color: #b03da3;
             &:hover {
-                color: #b03da3;
-                font-size: 30px;
+                color: #6600cc;
             }
         }
     }
