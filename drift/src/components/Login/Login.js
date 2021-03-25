@@ -23,13 +23,13 @@ const Login = () => {
                         className='input-form'
                         type='password'
                     />
+                    <div className='register-login'>
+                        <p>Don't have an account yet? Go make one!</p>
+                        <Link to='/register' className='link-to-register'>
+                            Sign Up!
+                        </Link>
+                    </div>
                 </form>
-                <div className='register-login'>
-                    <p>Don't have an account yet? Go make one!</p>
-                    <Link to='/register' className='link-to-register'>
-                        Sign Up!
-                    </Link>
-                </div>
             </div>
         </div>
     );

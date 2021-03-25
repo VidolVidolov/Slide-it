@@ -8,12 +8,16 @@
         padding-bottom: 50px;
     }
     .login-form-wrapper {
-        padding-top: 50px;
+        padding-top: 100px;
         h2 {
             display: inline-block;
         }
         .form-login {
-            background-color: transparent;
+            background-color: rgb(0, 0, 0, 0.7);
+            border-radius: 4px;
+            border-color: gray;
+            border-width: 4px;
+            border-style: solid;
             width: 400px;
             margin: auto;
             padding: 20px 30px 0px 30px;
@@ -41,6 +45,8 @@
         }
         .register-login {
             color: white;
+            height: 40px;
+            padding-bottom: 25px;
         }
         .link-to-register {
             text-decoration: none;
