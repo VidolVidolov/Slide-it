@@ -1,0 +1,53 @@
+.login-page-wrapper {
+    min-height: 864px;
+    background-image: url('../assets/background.jpg');
+    .login-heading {
+        color: white;
+        height: 100%;
+        margin: auto;
+        padding-bottom: 50px;
+    }
+    .login-form-wrapper {
+        padding-top: 50px;
+        h2 {
+            display: inline-block;
+        }
+        .form-login {
+            background-color: transparent;
+            width: 400px;
+            margin: auto;
+            padding: 20px 30px 0px 30px;
+            .input-form {
+                margin: auto;
+                background-color: transparent;
+                padding-bottom: 27px;
+                .MuiOutlinedInput-notchedOutline {
+                    border-color: white;
+                }
+                .MuiInputLabel-outlined {
+                    color: white;
+                    &:focus {
+                        color: #b03da3;
+                    }
+                }
+                .MuiFormHelperText-contained {
+                    color: white;
+                }
+                .MuiOutlinedInput-input {
+                    color: white;
+                }
+            }
+        }
+        .register-login {
+            color: white;
+        }
+        .link-to-register {
+            text-decoration: none;
+            color: white;
+            &:hover {
+                color: #b03da3;
+                font-size: 18px;
+            }
+        }
+    }
+}

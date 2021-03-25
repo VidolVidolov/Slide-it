@@ -1,0 +1,34 @@
+.home-wrapper {
+    min-height: 864px;
+    background-image: url('../assets/background.jpg');
+
+    .heading-home {
+        color: white;
+        padding-top: 100px;
+        margin: auto;
+        font-size: 50px;
+    }
+    .heading-home-small {
+        color: white;
+        padding-top: 30px;
+        margin: auto;
+        text-decoration: none;
+        display: inline-block;
+        &:hover {
+            color: #b03da3;
+            font-size: 18px;
+        }
+    }
+    .heading-home-smaller {
+        color: white;
+        padding-top: 10px;
+        margin: auto;
+        .login{
+            text-decoration: none;
+            &:hover {
+                color: #b03da3;
+                font-size: 30px;
+            }
+        }
+    }
+}
