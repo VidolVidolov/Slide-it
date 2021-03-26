@@ -1,4 +1,5 @@
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import './Login.scss';
 const Login = () => {
@@ -23,6 +24,13 @@ const Login = () => {
                         className='input-form'
                         type='password'
                     />
+                    <Button
+                        variant='contained'
+                        color='primary'
+                        className='button-form'
+                    >
+                        LOG IN
+                    </Button>
                     <div className='register-login'>
                         <p>Don't have an account yet? Go make one!</p>
                         <Link to='/register' className='link-to-register'>

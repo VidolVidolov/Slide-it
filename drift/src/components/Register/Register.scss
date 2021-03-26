@@ -39,6 +39,27 @@
                     width: 270px;
                 }
             }
+            .error-input {
+                .MuiOutlinedInput-notchedOutline {
+                    border-color: red;
+                }
+                .MuiInputLabel-outlined {
+                    color: red;
+                }
+                .MuiFormHelperText-contained {
+                    color: red;
+                }
+                .MuiOutlinedInput-input {
+                    color: red;
+                    width: 270px;
+                }
+            }
+            .button-form {
+                background-color: #b03da3;
+                &:hover {
+                    background-color: #6600cc;
+                }
+            }
         }
         .login-register {
             color: white;

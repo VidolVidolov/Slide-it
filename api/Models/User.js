@@ -11,9 +11,8 @@ const User = new mongoose.Schema({
         required: true,
     },
     currentCar: {
-        type: Number,
-        required: true,
-        default: 0,
+        type: mongoose.Types.ObjectId,
+        ref: 'Car',
     },
     whishCars: [
         {

@@ -8,11 +8,9 @@ const Car = new mongoose.Schema({
     },
     model: {
         type: String,
-        required: true,
     },
     horsePower: {
         type: Number,
-        required: true,
         default: 0,
     },
     parts: [
@@ -30,7 +28,6 @@ const Car = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: true,
     },
 });
 

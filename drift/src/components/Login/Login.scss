@@ -42,6 +42,13 @@
                     width: 270px;
                 }
             }
+            .button-form {
+                background-color: #b03da3;
+                width: 110px;
+                &:hover {
+                    background-color: #6600cc;
+                }
+            }
         }
         .register-login {
             color: white;
