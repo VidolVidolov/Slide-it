@@ -2,6 +2,7 @@ import {
     REGISTER,
     LOG_IN,
     FAIL_PERSIST_STATE,
+    LOG_OUT,
 } from '../actionTypes/userActionTypes';
 import userService from '../services/userService';
 import { auth } from '../utils/firebase';
@@ -20,6 +21,9 @@ const failPersistState = () => ({
     type: FAIL_PERSIST_STATE,
 });
 
+const logoutSuccess = () => ({
+    type: LOG_OUT,
+});
 export const register = (filledForm) => async (dispatch) => {
     try {
         const res = await userService.registerUser(filledForm);
@@ -45,7 +49,7 @@ export const login = (form) => async (dispatch) => {
         const id = tokenResult.claims.id;
         const infoUser = { email: data.user.email, idToken, id };
 
-        dispatch(loginSuccess(infoUser));
+        // dispatch(loginSuccess(infoUser));
     } catch (error) {
         throw { error: 'Email or password is invalid', field: 'email' };
     }
@@ -67,5 +71,15 @@ export const onAuthStateChanged = () => async (dispatch) => {
         });
     } catch (error) {
         throw { error: error.error || error.message };
+    }
+};
+
+export const logout = () => async (dispatch) => {
+    try {
+        await auth.signOut();
+
+        dispatch(logoutSuccess());
+    } catch (error) {
+        throw { error: error.message || error.error };
     }
 };
