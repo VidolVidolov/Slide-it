@@ -34,6 +34,7 @@ export const register = (filledForm) => async (dispatch) => {
                 error: 'User already exists',
             };
         }
+        localStorage.setItem('loggedIn', 'true');
         dispatch(registerSuccess(data));
     } catch (error) {
         throw { error: error.error || error.message, field: 'email' };
@@ -63,7 +64,7 @@ export const onAuthStateChanged = () => async (dispatch) => {
                 const tokenResult = await auth.currentUser.getIdTokenResult();
                 const id = tokenResult.claims.id;
                 const infoUser = { email: user.email, idToken, id };
-
+                localStorage.setItem('loggedIn', 'true');
                 dispatch(loginSuccess(infoUser));
             } else {
                 dispatch(failPersistState());
@@ -77,7 +78,7 @@ export const onAuthStateChanged = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         await auth.signOut();
-
+        localStorage.removeItem('loggedIn');
         dispatch(logoutSuccess());
     } catch (error) {
         throw { error: error.message || error.error };

@@ -1,17 +1,18 @@
-import { Switch, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
-import LoggedHome from './components/LoggedHome';
+import { Switch } from 'react-router-dom';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { onAuthStateChanged } from './actions/userActions';
 import PrivateRoute from './hoc/PrivateRoute';
 import PublicRoute from './hoc/PublicRoute';
-import './App.css';
+import Layout from './components/Layout';
+import Home from './components/Home';
+import Login from './components/Login';
+import Register from './components/Register';
+import LoggedHome from './components/LoggedHome';
+import Profile from './components/Profile';
+import './App.scss';
 
-function App({ user, onAuthStateChanged }) {
+function App({ onAuthStateChanged }) {
     useEffect(() => {
         onAuthStateChanged();
     }, [onAuthStateChanged]);
@@ -29,15 +30,17 @@ function App({ user, onAuthStateChanged }) {
                         path='/home'
                         component={LoggedHome}
                     ></PrivateRoute>
+                    <PrivateRoute
+                        path='/profile'
+                        component={Profile}
+                    ></PrivateRoute>
                 </Switch>
             </Layout>
         </div>
     );
 }
-const mapStateToProps = (state) => ({
-    user: state.user,
-});
+
 const mapDispatchToProps = {
     onAuthStateChanged,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

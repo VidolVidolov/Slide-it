@@ -18,7 +18,7 @@ const Layout = ({ children, email, logout }) => {
                         <Link to={email ? '/home' : '/'}>
                             <Logo className='logo'></Logo>
                         </Link>
-                        {email ? (
+                        {email && (
                             <div className='account-links'>
                                 <Link to='/profile'>
                                     <div className='left-part-header-item'>
@@ -30,8 +30,6 @@ const Layout = ({ children, email, logout }) => {
                                     <p>{email}</p>
                                 </div>
                             </div>
-                        ) : (
-                            ''
                         )}
                     </div>
                     <div className='right-part-header'>
