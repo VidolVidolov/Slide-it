@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
                     </div>
                 </div>
             </header>
-            {children}
+            <div className='children-wrapper'>{children}</div>
             <footer>&copy; Slide it! by Vidol Vidolov</footer>
         </div>
     );
