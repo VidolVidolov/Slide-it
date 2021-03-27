@@ -18,6 +18,8 @@ const registerUser = async ({ email, password, currentCar }) => {
         });
 
         const userFirebase = await admin.auth().createUser({ email, password });
+
+        await admin.auth().setCustomUserClaims(userFirebase.uid, { id: userDB._id });
         const idToken = await admin.auth().createCustomToken(userFirebase.uid);
         return { idToken, email, id: userDB._id };
     } catch (error) {

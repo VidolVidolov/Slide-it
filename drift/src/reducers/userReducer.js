@@ -1,21 +1,29 @@
-import { REGISTER } from '../actionTypes/userActionTypes';
+import {
+    REGISTER,
+    LOG_IN,
+    REFRESH_STATE,
+    FAIL_PERSIST_STATE,
+} from '../actionTypes/userActionTypes';
 
-const initalStateUser = {
+const initialStateUser = {
     id: '',
     email: '',
     idToken: '',
     logged: false,
 };
 
-const user = (state = initalStateUser, action) => {
+const user = (state = initialStateUser, action) => {
     switch (action.type) {
         case REGISTER:
+        case LOG_IN:
+        case REFRESH_STATE:
             return {
                 ...state,
                 logged: true,
                 ...action.payload,
             };
-
+        case FAIL_PERSIST_STATE:
+            return initialStateUser;
         default:
             return state;
     }

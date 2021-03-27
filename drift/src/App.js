@@ -3,9 +3,15 @@ import Layout from './components/Layout';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register/Register';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { onAuthStateChanged } from './actions/userActions';
 import './App.css';
 
-function App() {
+function App({ user, onAuthStateChanged }) {
+    useEffect(() => {
+        onAuthStateChanged();
+    }, [onAuthStateChanged]);
     return (
         <div className='App'>
             <Layout>
@@ -18,5 +24,10 @@ function App() {
         </div>
     );
 }
-
-export default App;
+const mapStateToProps = (state) => ({
+    user: state.user,
+});
+const mapDispatchToProps = {
+    onAuthStateChanged,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
