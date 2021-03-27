@@ -25,9 +25,9 @@ const Layout = ({ children, email, logout }) => {
                                         Account
                                     </div>
                                 </Link>
-                                Username &#187;&#187;
                                 <div className='left-part-header-item-name'>
-                                    {email}
+                                    Username &#187;&#187;
+                                    <p>{email}</p>
                                 </div>
                             </div>
                         ) : (

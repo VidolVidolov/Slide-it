@@ -47,29 +47,37 @@
         .left-part-header {
             display: flex;
             align-items: center;
+            height: 40px;
+            align-items: center;
             .left-part-header-item {
                 color: white;
-                // padding-left: 60px;
+                padding-right: 30px;
                 text-decoration: none;
                 cursor: pointer;
                 &:hover {
                     color: #b03da3;
                     font-size: 18px;
+                    padding-right: 24px;
                 }
             }
         }
 
         .account-links {
             display: flex;
-            justify-content: space-between;
             padding-left: 60px;
             height: 40px;
             align-items: center;
             color: white;
             .left-part-header-item-name {
-                color: #b03da3;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                p {
+                    color: #b03da3;
+                    padding-left: 10px;
+                }
             }
-            width: 235px;
+            width: 350px;
         }
     }
     footer {

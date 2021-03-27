@@ -7,6 +7,8 @@ import LoggedHome from './components/LoggedHome';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { onAuthStateChanged } from './actions/userActions';
+import PrivateRoute from './hoc/PrivateRoute';
+import PublicRoute from './hoc/PublicRoute';
 import './App.css';
 
 function App({ user, onAuthStateChanged }) {
@@ -17,10 +19,16 @@ function App({ user, onAuthStateChanged }) {
         <div className='App'>
             <Layout>
                 <Switch>
-                    <Route exact path='/' component={Home}></Route>
-                    <Route path='/login' component={Login}></Route>
-                    <Route path='/register' component={Register}></Route>
-                    <Route path='/home' component={LoggedHome}></Route>
+                    <PublicRoute exact path='/' component={Home}></PublicRoute>
+                    <PublicRoute path='/login' component={Login}></PublicRoute>
+                    <PublicRoute
+                        path='/register'
+                        component={Register}
+                    ></PublicRoute>
+                    <PrivateRoute
+                        path='/home'
+                        component={LoggedHome}
+                    ></PrivateRoute>
                 </Switch>
             </Layout>
         </div>
