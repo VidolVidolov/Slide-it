@@ -50,12 +50,18 @@
     }
     .setup-car-button {
         background-color: #ae3da1;
-        margin-top: 72px;
         width: 190px;
         height: 30px;
         &:hover {
             background-color: #6600cc;
         }
+    }
+    .profile-buttons-setup-car{
+        width: 420px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 72px;
     }
 }
 

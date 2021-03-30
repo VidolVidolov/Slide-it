@@ -1,12 +1,14 @@
 .modify-car-form {
     background-color: rgba(0, 0, 0, 0.7);
-    height: 100%;
     width: 350px;
     border: 4px solid transparent;
     flex-direction: column;
-    padding-top: 50px;
-    height: 480px;
-
+    height: 530px;
+    h2{
+        color: white;
+        padding-bottom: 20px;
+        margin-top: -20px;
+    }
     label + .MuiInput-formControl {
         color: white;
     }

@@ -14,7 +14,11 @@ const Profile = () => {
         <div className='page-wrapper'>
             <div className='pseudo-side-menu'>
                 <h1 className='page-heading'>account</h1>
-                {setUpCarForm ? <ModifyCarForm close={handleOpenSetUpForm} /> : ''}
+                {setUpCarForm ? (
+                    <ModifyCarForm close={handleOpenSetUpForm} />
+                ) : (
+                    ''
+                )}
             </div>
             <div className='page-content'>
                 <CarMainInfo />
@@ -73,12 +77,21 @@ const Profile = () => {
                     </ul>
                 </div>
                 <div className='potential'>Car's potential: 5.5</div>
-                <Button
-                    className='setup-car-button'
-                    onClick={handleOpenSetUpForm}
-                >
-                    Set up your car
-                </Button>
+                <div className='profile-buttons-setup-car'>
+                    <Button
+                        className='setup-car-button'
+                        onClick={handleOpenSetUpForm}
+                    >
+                        Set up your car
+                    </Button>
+                    <span>or</span>
+                    <Button
+                        className='setup-car-button'
+                        onClick={handleOpenSetUpForm}
+                    >
+                        Modify your car
+                    </Button>
+                </div>
                 <div className='car-price'>Total car price: 9000 Euro</div>
             </div>
         </div>
