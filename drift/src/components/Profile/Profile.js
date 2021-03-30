@@ -85,10 +85,7 @@ const Profile = () => {
                         Set up your car
                     </Button>
                     <span>or</span>
-                    <Button
-                        className='setup-car-button'
-                        onClick={handleOpenSetUpForm}
-                    >
+                    <Button className='setup-car-button'>
                         Modify your car
                     </Button>
                 </div>
