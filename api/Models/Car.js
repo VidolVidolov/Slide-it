@@ -26,6 +26,12 @@ const Car = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    picture: {
+        type: String,
+    },
+    videoLink: {
+        type: String,
+    },
     price: {
         type: Number,
     },

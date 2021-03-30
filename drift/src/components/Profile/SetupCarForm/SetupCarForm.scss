@@ -1,0 +1,38 @@
+.modify-car-form {
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    width: 350px;
+    border: 4px solid transparent;
+    flex-direction: column;
+    padding-top: 50px;
+    height: 480px;
+
+    label + .MuiInput-formControl {
+        color: white;
+    }
+    .MuiInputLabel-animated {
+        color: white;
+    }
+    .MuiFormHelperText-root {
+        color: white;
+    }
+    .MuiFormLabel-root.Mui-focused {
+        color: #ae3da1;
+    }
+    .MuiInput-underline:after {
+        border-bottom: 2px solid #ae3da1;
+    }
+    .car-input {
+        padding-bottom: 20px;
+    }
+
+    .setup-car-button {
+        background-color: #ae3da1;
+        width: 190px;
+        margin-top: 20px;
+        height: 30px;
+        &:hover {
+            background-color: #6600cc;
+        }
+    }
+}
