@@ -1,10 +1,18 @@
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import useForm from '../../../hooks/useForm';
 import './ModifyCarForm.scss';
 
 const ModifyCarForm = ({ close }) => {
+    const [form, setForm] = useForm({});
+    const handleModifyCar = async (e) => {
+        e.preventDefault();
+        try {
+            console.log(form);
+        } catch (error) {}
+    };
     return (
-        <div className='modify-car-form'>
+        <form className='modify-car-form' onSubmit={handleModifyCar}>
             <h2>Modify your car</h2>
             <TextField
                 id='standard-helperText'
@@ -13,6 +21,8 @@ const ModifyCarForm = ({ close }) => {
                 helperText='Enter part brand'
                 className='car-input'
                 type='text'
+                name='brand'
+                onChange={setForm}
             />
             <TextField
                 id='standard-helperText'
@@ -21,6 +31,8 @@ const ModifyCarForm = ({ close }) => {
                 helperText='Enter part'
                 className='car-input'
                 type='text'
+                name='type'
+                onChange={setForm}
             />
 
             <TextField
@@ -30,6 +42,8 @@ const ModifyCarForm = ({ close }) => {
                 helperText='Enter bonus horse power'
                 className='car-input'
                 type='number'
+                name='bonusHorsePower'
+                onChange={setForm}
             />
             <TextField
                 id='standard-helperText'
@@ -38,12 +52,16 @@ const ModifyCarForm = ({ close }) => {
                 helperText='Enter price of the part'
                 className='car-input'
                 type='number'
+                name='price'
+                onChange={setForm}
             />
-            <Button className='setup-car-button'>Modify</Button>
+            <Button className='setup-car-button' type='submit'>
+                Modify
+            </Button>
             <Button className='setup-car-button' onClick={close}>
                 Cancel
             </Button>
-        </div>
+        </form>
     );
 };
 
