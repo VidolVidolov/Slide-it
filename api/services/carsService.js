@@ -44,7 +44,28 @@ const loadCar = async (userId) => {
         throw errorToThrow;
     }
 };
+
+const modifyCar = async (userId, form) => {
+    try {
+        const user = await User.findById(userId);
+
+        if (!user) {
+            throw { error: 'The car has no user!' };
+        }
+        
+    } catch (error) {
+        const errorToThrow = {};
+
+        error.errors
+            ? (errorToThrow.error =
+                  error.errors[Object.keys(error.errors)[0]].message)
+            : (errorToThrow.error = error.message);
+
+        throw errorToThrow;
+    }
+};
 module.exports = {
     saveCar,
     loadCar,
+    modifyCar,
 };

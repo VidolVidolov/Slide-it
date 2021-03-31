@@ -1,14 +1,18 @@
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import useForm from '../../../hooks/useForm';
+import { connect } from 'react-redux';
+import { userId } from '../../../reducers/userReducer';
+import { modifyCar } from '../../../actions/carActions';
 import './ModifyCarForm.scss';
 
-const ModifyCarForm = ({ close }) => {
+const ModifyCarForm = ({ close, modifyCar, userId }) => {
     const [form, setForm] = useForm({});
     const handleModifyCar = async (e) => {
         e.preventDefault();
         try {
-            console.log(form);
+            close();
+            await modifyCar(userId, form);
         } catch (error) {}
     };
     return (
@@ -65,4 +69,11 @@ const ModifyCarForm = ({ close }) => {
     );
 };
 
-export default ModifyCarForm;
+const mapStateToProps = (state) => ({
+    userId: userId(state),
+});
+
+const mapDispatchToProps = {
+    modifyCar,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ModifyCarForm);

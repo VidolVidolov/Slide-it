@@ -28,4 +28,19 @@ carsController.get('/:userId', async (req, res) => {
     }
 });
 
+carsController.post('/:userId/car', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const form = req.body;
+
+        if (!Number(form.bonusHorsePower) || !Number(form.price)) {
+            throw { error: 'Invalid form values' };
+        }
+        const response = await carsService.modifyCar(userId, form);
+        console.log(response);
+    } catch (error) {
+        res.status(404).send({ error: error.error || error.message });
+    }
+});
+
 module.exports = carsController;

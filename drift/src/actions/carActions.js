@@ -33,3 +33,18 @@ export const loadCarInfo = (userId) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const modifyCar = (userId, form) => async (dispatch) => {
+    try {
+        const res = await carService.modifyCar(userId, form);
+        const data = await res.json();
+
+        if (data.error) {
+            throw { error: data.error };
+        }
+
+        dispatch(loadCarSuccess(data));
+    } catch (error) {
+        console.log(error);
+    }
+};
