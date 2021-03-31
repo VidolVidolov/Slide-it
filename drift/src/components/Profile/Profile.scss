@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     color: white;
     padding: 0 100px 50px 100px;
+    height: 650px;
     .picture-car {
         color: white;
         .picture-picture {
@@ -18,6 +19,7 @@
                 display: inline-flex;
                 color: white;
                 text-decoration: none;
+                font-size: 20px;
                 &:hover {
                     color: #ae3da1;
                 }
@@ -35,18 +37,22 @@
             list-style-type: none;
             text-align: start;
             font-size: large;
+            display: flex;
             &::-webkit-scrollbar {
                 width: 0.1px;
+            }
+            h2 {
+                margin: auto;
             }
         }
     }
     .potential {
-        padding-top: 72px;
-        font-size: 25px;
+        padding-top: 85px;
+        font-size: 32px;
     }
     .car-price {
-        font-size: 27px;
-        padding-top: 70px;
+        font-size: 32px;
+        padding-top: 85px;
     }
     .setup-car-button {
         background-color: #ae3da1;
@@ -56,12 +62,13 @@
             background-color: #6600cc;
         }
     }
-    .profile-buttons-setup-car{
+    .profile-buttons-setup-car {
         width: 420px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 72px;
+        height: 60px;
+        padding-top: 10px;
     }
 }
 
@@ -72,5 +79,4 @@
         height: 100px;
         padding-bottom: 50px;
     }
- 
 }

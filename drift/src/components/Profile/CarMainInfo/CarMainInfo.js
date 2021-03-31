@@ -1,11 +1,11 @@
 import './CarMainInfo.scss';
 
-const CarMainInfo = () => {
+const CarMainInfo = ({ brand, model, hp }) => {
     return (
         <div className='car-description'>
-            <h2>brand: bmw</h2>
-            <h2>model: e92</h2>
-            <h2>power: 231 HP</h2>
+            <h2>brand: {brand}</h2>
+            <h2>model: {model}</h2>
+            <h2>power: {hp} HP</h2>
         </div>
     );
 };

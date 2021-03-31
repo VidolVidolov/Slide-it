@@ -3,8 +3,24 @@
     width: 350px;
     border: 4px solid transparent;
     flex-direction: column;
-    height: 530px;
-    h2{
+    height: 610px;
+    .inputs-wrapper {
+        overflow-y: scroll;
+        height: 440px;
+
+        &::-webkit-scrollbar {
+            width: 2px;
+        }
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px black;
+            border-radius: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #ae3da1;
+            border-radius: 10px;
+        }
+    }
+    h2 {
         color: white;
         padding-bottom: 20px;
         margin-top: -20px;

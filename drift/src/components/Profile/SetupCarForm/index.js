@@ -1,1 +1,1 @@
-export { default } from './SetupCar';
+export { default } from './SetupCarForm';

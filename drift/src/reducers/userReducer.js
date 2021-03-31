@@ -32,3 +32,4 @@ const user = (state = initialStateUser, action) => {
 };
 export default user;
 export const userEmail = (state) => state.user.email;
+export const userId = (state) => state.user.id;
