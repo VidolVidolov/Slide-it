@@ -24,8 +24,8 @@ const user = (state = initialStateUser, action) => {
                 ...action.payload,
             };
         case LOG_OUT:
-        case FAIL_PERSIST_STATE:
             return initialStateUser;
+        case FAIL_PERSIST_STATE:
         default:
             return state;
     }

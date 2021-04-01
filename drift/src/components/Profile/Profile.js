@@ -54,13 +54,18 @@ const Profile = ({ loadCarInfo, car, userId }) => {
                     </div>
                 </div>
                 <div className='mods-wrapper'>
-                    <ul className='parts-and-modifications'>
-                        {car.parts.length === 0 ? (
-                            <h2>The current car is STOCK</h2>
-                        ) : (
-                            car.parts.map((x) => <li>{x}</li>)
-                        )}
-                    </ul>
+                    {car.parts.length === 0 ? (
+                        <h2>The current car is STOCK</h2>
+                    ) : (
+                        <ul className='parts-and-modifications'>
+                            {car.parts.map((x) => (
+                                <li>
+                                    Brand: {x.brand} &rarr; Part: {x.type} &rarr; Price: {x.price} Euro{' '}
+                                    &rarr; +HP: {x.bonusHorsePower}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
                 <div className='potential'>
                     Car's potential: {car.potential}

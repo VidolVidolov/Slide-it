@@ -11,106 +11,104 @@ const ModifyCarForm = ({ close, saveCar, userId }) => {
     const [form, setForm] = useForm({});
     const ref = useRef();
     const handleSubmitSetUpCar = async (e) => {
+        e.preventDefault();
         try {
             close();
-            e.preventDefault();
             await saveCar(userId, form);
         } catch (error) {
             close();
         }
     };
     return (
-        <>
-            <form
-                className='modify-car-form'
-                onSubmit={handleSubmitSetUpCar}
-                ref={ref}
+        <form
+            className='modify-car-form'
+            onSubmit={handleSubmitSetUpCar}
+            ref={ref}
+        >
+            <h2>Setup your car</h2>
+            <div className='inputs-wrapper'>
+                <TextField
+                    id='standard-helperText'
+                    label='Brand'
+                    defaultValue=''
+                    helperText='Enter your brand'
+                    className='car-input'
+                    type='text'
+                    name='brand'
+                    onChange={setForm}
+                />
+                <TextField
+                    id='standard-helperText'
+                    label='Model'
+                    defaultValue=''
+                    helperText='Enter your model'
+                    className='car-input'
+                    type='text'
+                    name='model'
+                    onChange={setForm}
+                />
+                <TextField
+                    id='standard-helperText'
+                    label='Horse power'
+                    defaultValue=''
+                    helperText='Enter current horse power'
+                    className='car-input'
+                    type='number'
+                    name='horsePower'
+                    onChange={setForm}
+                />
+                <TextField
+                    id='standard-helperText'
+                    label='Price'
+                    defaultValue=''
+                    helperText='Enter your the price of your car'
+                    className='car-input'
+                    type='number'
+                    name='price'
+                    onChange={setForm}
+                />
+                <TextField
+                    id='standard-helperText'
+                    label='Potential'
+                    defaultValue=''
+                    helperText='Enter the potential of the car'
+                    className='car-input'
+                    type='number'
+                    name='potential'
+                    onChange={setForm}
+                />
+                <TextField
+                    id='standard-helperText'
+                    label='Picture'
+                    defaultValue=''
+                    helperText='Post a picture of your car'
+                    className='car-input'
+                    type='text'
+                    name='picture'
+                    onChange={setForm}
+                />
+                <TextField
+                    id='standard-helperText'
+                    label='Video Link'
+                    defaultValue=''
+                    helperText='Post a picture of your car'
+                    className='car-input'
+                    type='text'
+                    name='videoLink'
+                    onChange={setForm}
+                />
+            </div>
+            <Button
+                className='setup-car-button'
+                type='submit'
+                onClick={ref.submit}
             >
-                <h2>Setup your car</h2>
-                <div className='inputs-wrapper'>
-                    <TextField
-                        id='standard-helperText'
-                        label='Brand'
-                        defaultValue=''
-                        helperText='Enter your brand'
-                        className='car-input'
-                        type='text'
-                        name='brand'
-                        onChange={setForm}
-                    />
-                    <TextField
-                        id='standard-helperText'
-                        label='Model'
-                        defaultValue=''
-                        helperText='Enter your model'
-                        className='car-input'
-                        type='text'
-                        name='model'
-                        onChange={setForm}
-                    />
-                    <TextField
-                        id='standard-helperText'
-                        label='Horse power'
-                        defaultValue=''
-                        helperText='Enter current horse power'
-                        className='car-input'
-                        type='number'
-                        name='horsePower'
-                        onChange={setForm}
-                    />
-                    <TextField
-                        id='standard-helperText'
-                        label='Price'
-                        defaultValue=''
-                        helperText='Enter your the price of your car'
-                        className='car-input'
-                        type='number'
-                        name='price'
-                        onChange={setForm}
-                    />
-                    <TextField
-                        id='standard-helperText'
-                        label='Potential'
-                        defaultValue=''
-                        helperText='Enter the potential of the car'
-                        className='car-input'
-                        type='number'
-                        name='potential'
-                        onChange={setForm}
-                    />
-                    <TextField
-                        id='standard-helperText'
-                        label='Picture'
-                        defaultValue=''
-                        helperText='Post a picture of your car'
-                        className='car-input'
-                        type='text'
-                        name='picture'
-                        onChange={setForm}
-                    />
-                    <TextField
-                        id='standard-helperText'
-                        label='Video Link'
-                        defaultValue=''
-                        helperText='Post a picture of your car'
-                        className='car-input'
-                        type='text'
-                        name='videoLink'
-                        onChange={setForm}
-                    />
-                </div>
-                <Button
-                    className='setup-car-button'
-                    type='submit'
-                    onClick={ref.submit}
-                >
-                    Save
-                </Button>
-                <Button className='setup-car-button' onClick={close}>
-                    Cancel
-                </Button>
-            </form>
-        </>
+                Save
+            </Button>
+            <Button className='setup-car-button' onClick={close}>
+                Cancel
+            </Button>
+        </form>
     );
 };
 

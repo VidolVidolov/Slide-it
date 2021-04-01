@@ -1,5 +1,6 @@
 const Car = require('../Models/Car');
 const User = require('../Models/User');
+const Part = require('../Models/Part');
 
 const saveCar = async (userId, form) => {
     try {
@@ -11,7 +12,8 @@ const saveCar = async (userId, form) => {
         const carId = user.currentCar;
         const car = await Car.findById(carId);
         Object.keys(form).forEach((x) => (car[x] = form[x]));
-        return await car.save();
+        await car.save();
+        return form;
     } catch (error) {
         const errorToThrow = {};
 
@@ -26,7 +28,12 @@ const saveCar = async (userId, form) => {
 
 const loadCar = async (userId) => {
     try {
-        const user = await User.findById(userId).populate('currentCar').lean();
+        const user = await User.findById(userId)
+            .populate({
+                path: 'currentCar',
+                populate: 'parts',
+            })
+            .lean();
 
         if (!user) {
             throw { error: 'The car has no user!' };
@@ -52,7 +59,12 @@ const modifyCar = async (userId, form) => {
         if (!user) {
             throw { error: 'The car has no user!' };
         }
-        
+        const carId = user.currentCar;
+        const car = await Car.findById(carId);
+        const part = await Part.create({ ...form });
+        car.parts.push(part);
+        await car.save();
+        return form;
     } catch (error) {
         const errorToThrow = {};
 

@@ -6,6 +6,7 @@
     height: 650px;
     .picture-car {
         color: white;
+        width: 550px;
         .picture-picture {
             width: 550px;
             height: 350px;
@@ -13,7 +14,7 @@
             border-radius: 20px;
         }
         .link-to-youtube {
-            padding-top: 10px;
+            // padding-top: 10px;
             p {
                 cursor: pointer;
                 display: inline-flex;
@@ -37,13 +38,17 @@
             list-style-type: none;
             text-align: start;
             font-size: large;
-            display: flex;
+            // display: flex;
             &::-webkit-scrollbar {
                 width: 0.1px;
             }
-            h2 {
-                margin: auto;
-            }
+        }
+        h2 {
+            margin: auto;
+            padding-top: 145px;
+        }
+        li {
+            align-items: center;
         }
     }
     .potential {

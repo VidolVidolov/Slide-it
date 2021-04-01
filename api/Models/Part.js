@@ -4,7 +4,6 @@ const Part = new mongoose.Schema({
     brand: {
         type: String,
         required: true,
-        unique: true,
     },
     type: {
         type: String,

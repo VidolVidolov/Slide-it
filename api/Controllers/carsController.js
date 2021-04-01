@@ -11,7 +11,7 @@ carsController.post('/:userId', async (req, res) => {
             throw { error: 'Invalid form values' };
         }
         const response = await carsService.saveCar(userId, form);
-        console.log(response);
+        res.status(201).send(response);
     } catch (error) {
         res.status(404).send({ error: error.error || error.message });
     }
@@ -37,7 +37,7 @@ carsController.post('/:userId/car', async (req, res) => {
             throw { error: 'Invalid form values' };
         }
         const response = await carsService.modifyCar(userId, form);
-        console.log(response);
+        res.status(201).send(response);
     } catch (error) {
         res.status(404).send({ error: error.error || error.message });
     }

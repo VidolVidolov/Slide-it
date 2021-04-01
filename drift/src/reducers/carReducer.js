@@ -1,4 +1,5 @@
-import { LOAD_CAR } from '../actionTypes/carActionTypes';
+import { LOAD_CAR, MODIFY_CAR } from '../actionTypes/carActionTypes';
+import { LOG_OUT } from '../actionTypes/userActionTypes';
 const initialStateCar = {
     _id: '',
     brand: '',
@@ -16,6 +17,13 @@ const car = (state = initialStateCar, action) => {
                 ...state,
                 ...action.payload,
             };
+        case MODIFY_CAR:
+            return {
+                ...state,
+                parts: [...state.parts, { ...action.payload }],
+            };
+        case LOG_OUT:
+            return initialStateCar;
         default:
             return state;
     }
