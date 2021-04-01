@@ -1,5 +1,6 @@
 import { apiKey } from '../../constants/weatherKey';
 import useFetch from '../../hooks/useFetch';
+import Weather from '../Weather/Weather';
 import './LoggedHome.scss';
 
 const LoggedHome = () => {
@@ -10,9 +11,7 @@ const LoggedHome = () => {
         <div className='page-wrapper'>
             <div className='pseudo-side-menu'>
                 <h1 className='page-heading'>Home</h1>
-                <div className='weather-content'>
-                    {weather.response?.location?.name}
-                </div>
+                <Weather>{weather.response}</Weather>
             </div>
             <div className='page-content'></div>
         </div>
