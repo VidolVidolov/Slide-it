@@ -2,6 +2,7 @@ import CarMainInfo from './CarMainInfo/CarMainInfo';
 import Button from '@material-ui/core/Button';
 import SetupCarForm from './SetupCarForm';
 import ModifyCarForm from './ModifyCarForm';
+import MiddleSectionAccount from './MiddleSectionAccount';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadCarInfo } from '../../actions/carActions';
@@ -41,32 +42,11 @@ const Profile = ({ loadCarInfo, car, userId }) => {
                     model={car.model}
                     hp={car.horsePower}
                 />
-                <div className='picture-car'>
-                    <img
-                        src={car.picture}
-                        alt='pic'
-                        className='picture-picture'
-                    />
-                    <div className='link-to-youtube'>
-                        <p onClick={() => window.open(car.videoLink)}>
-                            &rarr; For video of the car click HERE &larr;
-                        </p>
-                    </div>
-                </div>
-                <div className='mods-wrapper'>
-                    {car.parts.length === 0 ? (
-                        <h2>The current car is STOCK</h2>
-                    ) : (
-                        <ul className='parts-and-modifications'>
-                            {car.parts.map((x) => (
-                                <li>
-                                    Brand: {x.brand} &rarr; Part: {x.type} &rarr; Price: {x.price} Euro{' '}
-                                    &rarr; +HP: {x.bonusHorsePower}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
+                <MiddleSectionAccount
+                    videoLink={car.videoLink}
+                    parts={car.parts}
+                    picture={car.picture}
+                />
                 <div className='potential'>
                     Car's potential: {car.potential}
                 </div>

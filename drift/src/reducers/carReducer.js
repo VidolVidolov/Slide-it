@@ -1,4 +1,4 @@
-import { LOAD_CAR, MODIFY_CAR } from '../actionTypes/carActionTypes';
+import { LOAD_CAR, MODIFY_CAR, SAVE_CAR } from '../actionTypes/carActionTypes';
 import { LOG_OUT } from '../actionTypes/userActionTypes';
 const initialStateCar = {
     _id: '',
@@ -13,6 +13,11 @@ const initialStateCar = {
 const car = (state = initialStateCar, action) => {
     switch (action.type) {
         case LOAD_CAR:
+            return {
+                ...state,
+                ...action.payload,
+            };
+        case SAVE_CAR:
             return {
                 ...state,
                 ...action.payload,
