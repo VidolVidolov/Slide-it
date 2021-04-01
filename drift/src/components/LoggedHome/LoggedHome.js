@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
 import { apiKey } from '../../constants/weatherKey';
 import useFetch from '../../hooks/useFetch';
+import './LoggedHome.scss';
 
 const LoggedHome = () => {
     const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Sofia`;
     const weather = useFetch(url);
-    console.log(weather.response);
+
     return (
         <div className='page-wrapper'>
             <div className='pseudo-side-menu'>
