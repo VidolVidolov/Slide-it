@@ -6,35 +6,43 @@ import MiddleSectionAccount from './MiddleSectionAccount';
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadCarInfo } from '../../actions/carActions';
+import {
+    changeWeatherToNotVisible,
+    changeWeatherToVisible,
+} from '../../actions/userActions';
 import { userId } from '../../reducers/userReducer';
-import Weather from '../Weather';
 import './Profile.scss';
 
-const Profile = ({ loadCarInfo, car, userId }) => {
+const Profile = ({
+    loadCarInfo,
+    car,
+    userId,
+    changeWeatherToNotVisible,
+    changeWeatherToVisible,
+}) => {
     const [setUpCarForm, setSetUpCarForm] = useState(false);
     const [modifyCarForm, setModifyCarForm] = useState(false);
-    const [weather, setWeather] = useState(true);
 
     const handleOpenSetUpForm = (e) => {
         if (setUpCarForm) {
             setSetUpCarForm(false);
-            setWeather(true);
+            changeWeatherToVisible();
         } else {
             setSetUpCarForm(true);
-            setWeather(false);
+            setModifyCarForm(false);
+            changeWeatherToNotVisible();
         }
-        setModifyCarForm(false);
     };
 
     const handleOpenModifyCarForm = (e) => {
         if (modifyCarForm) {
             setModifyCarForm(false);
-            setWeather(true);
+            changeWeatherToVisible();
         } else {
             setModifyCarForm(true);
-            setWeather(false);
+            setSetUpCarForm(false);
+            changeWeatherToNotVisible();
         }
-        setSetUpCarForm(false);
     };
 
     useEffect(() => {
@@ -49,7 +57,6 @@ const Profile = ({ loadCarInfo, car, userId }) => {
                 {modifyCarForm && (
                     <ModifyCarForm close={handleOpenModifyCarForm} />
                 )}
-                {weather && <Weather />}
             </div>
             <div className='page-content'>
                 <CarMainInfo
@@ -95,5 +102,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     loadCarInfo,
+    changeWeatherToNotVisible,
+    changeWeatherToVisible,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

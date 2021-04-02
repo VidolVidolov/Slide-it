@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { userLocation } from '../../reducers/userReducer';
 import { changeLocation } from '../../actions/userActions';
 
-const Weather = ({ location, changeLocation }) => {
+const Weather = ({ location, changeLocation, showWeather }) => {
     let buffer = '';
     const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
     const { response: weather, error } = useFetch(url);
@@ -19,9 +19,9 @@ const Weather = ({ location, changeLocation }) => {
         }
         await changeLocation(buffer);
     };
-
+    console.log(showWeather);
     return (
-        <div className='weather-content'>
+        <div className={`${!showWeather && 'hidden-weather'} weather-content`}>
             <form onSubmit={handleSubmit}>
                 <TextField
                     id='outlined-helperText'

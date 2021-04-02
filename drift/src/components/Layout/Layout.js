@@ -1,15 +1,27 @@
 import { ReactComponent as Logo } from './assets/Logo Slide it.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userEmail } from '../../reducers/userReducer';
-import { logout } from '../../actions/userActions';
+import { showWeather, userEmail } from '../../reducers/userReducer';
+import { logout, changeWeatherToVisible } from '../../actions/userActions';
 import './Layout.scss';
-const Layout = ({ children, email, logout }) => {
+import Weather from '../Weather';
+import { useEffect } from 'react';
+
+const Layout = ({
+    children,
+    email,
+    logout,
+    showWeather,
+    changeWeatherToVisible,
+}) => {
     const history = useHistory();
     const handleLogOut = async () => {
         await logout();
         history.push('/');
     };
+    useEffect(() => {
+        email && changeWeatherToVisible();
+    }, [changeWeatherToVisible, email]);
     return (
         <div className='layout-wrapper'>
             <header>
@@ -54,7 +66,10 @@ const Layout = ({ children, email, logout }) => {
                     </div>
                 </div>
             </header>
-            <div className='children-wrapper'>{children}</div>
+            <div className='children-wrapper'>
+                {children}
+                <Weather showWeather={showWeather} />
+            </div>
             <footer>&copy; Slide it! by Vidol Vidolov</footer>
         </div>
     );
@@ -62,9 +77,11 @@ const Layout = ({ children, email, logout }) => {
 
 const mapStateToProps = (state) => ({
     email: userEmail(state),
+    showWeather: showWeather(state),
 });
 
 const mapDispatchToProps = {
     logout,
+    changeWeatherToVisible,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);

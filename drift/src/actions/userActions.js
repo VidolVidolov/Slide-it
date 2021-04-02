@@ -4,11 +4,11 @@ import {
     FAIL_PERSIST_STATE,
     LOG_OUT,
     CHANGE_LOCATION,
+    SHOW_WEATHER,
+    HIDE_WEATHER,
 } from '../actionTypes/userActionTypes';
-import useFetch from '../hooks/useFetch';
 import userService from '../services/userService';
 import { auth } from '../utils/firebase';
-import { apiKey } from '../constants/weatherKey';
 
 const registerSuccess = (userInfo) => ({
     type: REGISTER,
@@ -30,6 +30,13 @@ const logoutSuccess = () => ({
 const changeLocationSuccess = (location) => ({
     type: CHANGE_LOCATION,
     payload: location,
+});
+export const changeWeatherToVisible = () => ({
+    type: SHOW_WEATHER,
+});
+
+export const changeWeatherToNotVisible = () => ({
+    type: HIDE_WEATHER,
 });
 
 export const register = (filledForm) => async (dispatch) => {
