@@ -12,6 +12,7 @@ const initialStateUser = {
     email: '',
     idToken: '',
     logged: false,
+    location: 'Sofia',
 };
 
 const user = (state = initialStateUser, action) => {
@@ -29,7 +30,7 @@ const user = (state = initialStateUser, action) => {
         case CHANGE_LOCATION:
             return {
                 ...state,
-                location: { ...action.payload },
+                location: action.payload,
             };
         case FAIL_PERSIST_STATE:
         default:
@@ -39,3 +40,4 @@ const user = (state = initialStateUser, action) => {
 export default user;
 export const userEmail = (state) => state.user.email;
 export const userId = (state) => state.user.id;
+export const userLocation = (state) => state.user.location;

@@ -98,10 +98,7 @@ export const changeLocation = (location) => async (dispatch) => {
         if (location === '') {
             throw { error: 'Location cannot be empty string' };
         }
-        const { response: weather, error } = useFetch(
-            `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`
-        );
-        dispatch(changeLocation(weather));
+        dispatch(changeLocationSuccess(location));
     } catch (error) {
         throw { error: error.message || error.error };
     }

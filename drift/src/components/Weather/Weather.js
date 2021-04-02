@@ -3,14 +3,13 @@ import useFetch from '../../hooks/useFetch';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './Weather.scss';
-import { useState } from 'react';
-const Weather = () => {
-    const [location, setLocation] = useState('Sofia');
-    let buffer = '';
-    const [url, setUrl] = useState(
-        `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`
-    );
+import { connect } from 'react-redux';
+import { userLocation } from '../../reducers/userReducer';
+import { changeLocation } from '../../actions/userActions';
 
+const Weather = ({ location, changeLocation }) => {
+    let buffer = '';
+    const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
     const { response: weather, error } = useFetch(url);
 
     const handleSubmit = async (e) => {
@@ -18,10 +17,7 @@ const Weather = () => {
         if (buffer === '') {
             return;
         }
-        setLocation(buffer);
-        setUrl(
-            `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${buffer}`
-        );
+        await changeLocation(buffer);
     };
 
     return (
@@ -75,4 +71,10 @@ const Weather = () => {
     );
 };
 
-export default Weather;
+const mapStateToProps = (state) => ({
+    location: userLocation(state),
+});
+const mapDispatchToProps = {
+    changeLocation,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Weather);
