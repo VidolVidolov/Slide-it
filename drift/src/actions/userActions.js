@@ -3,9 +3,12 @@ import {
     LOG_IN,
     FAIL_PERSIST_STATE,
     LOG_OUT,
+    CHANGE_LOCATION,
 } from '../actionTypes/userActionTypes';
+import useFetch from '../hooks/useFetch';
 import userService from '../services/userService';
 import { auth } from '../utils/firebase';
+import { apiKey } from '../constants/weatherKey';
 
 const registerSuccess = (userInfo) => ({
     type: REGISTER,
@@ -24,6 +27,11 @@ const failPersistState = () => ({
 const logoutSuccess = () => ({
     type: LOG_OUT,
 });
+const changeLocationSuccess = (location) => ({
+    type: CHANGE_LOCATION,
+    payload: location,
+});
+
 export const register = (filledForm) => async (dispatch) => {
     try {
         const res = await userService.registerUser(filledForm);
@@ -80,6 +88,20 @@ export const logout = () => async (dispatch) => {
         await auth.signOut();
         localStorage.removeItem('loggedIn');
         dispatch(logoutSuccess());
+    } catch (error) {
+        throw { error: error.message || error.error };
+    }
+};
+
+export const changeLocation = (location) => async (dispatch) => {
+    try {
+        if (location === '') {
+            throw { error: 'Location cannot be empty string' };
+        }
+        const { response: weather, error } = useFetch(
+            `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`
+        );
+        dispatch(changeLocation(weather));
     } catch (error) {
         throw { error: error.message || error.error };
     }

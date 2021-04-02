@@ -7,19 +7,33 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { loadCarInfo } from '../../actions/carActions';
 import { userId } from '../../reducers/userReducer';
+import Weather from '../Weather';
 import './Profile.scss';
 
 const Profile = ({ loadCarInfo, car, userId }) => {
     const [setUpCarForm, setSetUpCarForm] = useState(false);
     const [modifyCarForm, setModifyCarForm] = useState(false);
+    const [weather, setWeather] = useState(true);
 
     const handleOpenSetUpForm = (e) => {
-        setUpCarForm ? setSetUpCarForm(false) : setSetUpCarForm(true);
+        if (setUpCarForm) {
+            setSetUpCarForm(false);
+            setWeather(true);
+        } else {
+            setSetUpCarForm(true);
+            setWeather(false);
+        }
         setModifyCarForm(false);
     };
 
     const handleOpenModifyCarForm = (e) => {
-        modifyCarForm ? setModifyCarForm(false) : setModifyCarForm(true);
+        if (modifyCarForm) {
+            setModifyCarForm(false);
+            setWeather(true);
+        } else {
+            setModifyCarForm(true);
+            setWeather(false);
+        }
         setSetUpCarForm(false);
     };
 
@@ -35,6 +49,7 @@ const Profile = ({ loadCarInfo, car, userId }) => {
                 {modifyCarForm && (
                     <ModifyCarForm close={handleOpenModifyCarForm} />
                 )}
+                {weather && <Weather />}
             </div>
             <div className='page-content'>
                 <CarMainInfo

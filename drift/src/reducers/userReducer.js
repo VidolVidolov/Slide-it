@@ -4,6 +4,7 @@ import {
     REFRESH_STATE,
     FAIL_PERSIST_STATE,
     LOG_OUT,
+    CHANGE_LOCATION,
 } from '../actionTypes/userActionTypes';
 
 const initialStateUser = {
@@ -25,6 +26,11 @@ const user = (state = initialStateUser, action) => {
             };
         case LOG_OUT:
             return initialStateUser;
+        case CHANGE_LOCATION:
+            return {
+                ...state,
+                location: { ...action.payload },
+            };
         case FAIL_PERSIST_STATE:
         default:
             return state;
