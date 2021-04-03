@@ -19,7 +19,7 @@ const Weather = ({ location, changeLocation, showWeather }) => {
         }
         await changeLocation(buffer);
     };
-    
+
     return (
         <div className={`${!showWeather && 'hidden-weather'} weather-content`}>
             <form onSubmit={handleSubmit}>

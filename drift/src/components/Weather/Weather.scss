@@ -61,7 +61,11 @@
             color: white;
             width: 200px;
         }
+        .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+            border-color: #b03da3;
+        }
     }
+    
     form {
         width: 336px;
         height: 130px;
