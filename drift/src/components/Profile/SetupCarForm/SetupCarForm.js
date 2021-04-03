@@ -98,16 +98,18 @@ const ModifyCarForm = ({ close, saveCar, userId }) => {
                     onChange={setForm}
                 />
             </div>
-            <Button
-                className='setup-car-button'
-                type='submit'
-                onClick={ref.submit}
-            >
-                Save
-            </Button>
-            <Button className='setup-car-button' onClick={close}>
-                Cancel
-            </Button>
+            <div className='setup-car-buttons-form'>
+                <Button
+                    className='setup-car-button'
+                    type='submit'
+                    onClick={ref.submit}
+                >
+                    Save
+                </Button>
+                <Button className='setup-car-button' onClick={close}>
+                    Cancel
+                </Button>
+            </div>
         </form>
     );
 };

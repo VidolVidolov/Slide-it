@@ -8,7 +8,7 @@
     .inputs-wrapper {
         overflow-y: scroll;
         height: 440px;
-
+        padding-left: 45px;
         &::-webkit-scrollbar {
             width: 2px;
         }
@@ -24,6 +24,7 @@
     h2 {
         color: white;
         margin-top: 30px;
+        padding-left: 115px;
     }
     label + .MuiInput-formControl {
         color: white;
@@ -43,14 +44,19 @@
     .car-input {
         padding-bottom: 20px;
     }
-
-    .setup-car-button {
-        background-color: #ae3da1;
-        width: 190px;
-        margin-top: 20px;
-        height: 30px;
-        &:hover {
-            background-color: #6600cc;
+    .setup-car-buttons-form {
+        width: 175px;
+        margin: 0 75px;
+        .setup-car-button {
+            margin: auto;
+            display: block;
+            background-color: #ae3da1;
+            width: 190px;
+            margin-top: 20px;
+            height: 30px;
+            &:hover {
+                background-color: #6600cc;
+            }
         }
     }
 }

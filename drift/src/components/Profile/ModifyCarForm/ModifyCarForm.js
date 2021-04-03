@@ -18,53 +18,57 @@ const ModifyCarForm = ({ close, modifyCar, userId }) => {
     return (
         <form className='modify-car-form' onSubmit={handleModifyCar}>
             <h2>Modify your car</h2>
-            <TextField
-                id='standard-helperText'
-                label='Brand'
-                defaultValue=''
-                helperText='Enter part brand'
-                className='car-input'
-                type='text'
-                name='brand'
-                onChange={setForm}
-            />
-            <TextField
-                id='standard-helperText'
-                label='Part'
-                defaultValue=''
-                helperText='Enter part'
-                className='car-input'
-                type='text'
-                name='type'
-                onChange={setForm}
-            />
+            <div className='inputs-wrapper-modify'>
+                <TextField
+                    id='standard-helperText'
+                    label='Brand'
+                    defaultValue=''
+                    helperText='Enter part brand'
+                    className='car-input'
+                    type='text'
+                    name='brand'
+                    onChange={setForm}
+                />
+                <TextField
+                    id='standard-helperText'
+                    label='Part'
+                    defaultValue=''
+                    helperText='Enter part'
+                    className='car-input'
+                    type='text'
+                    name='type'
+                    onChange={setForm}
+                />
 
-            <TextField
-                id='standard-helperText'
-                label='Bonus horse power'
-                defaultValue=''
-                helperText='Enter bonus horse power'
-                className='car-input'
-                type='number'
-                name='bonusHorsePower'
-                onChange={setForm}
-            />
-            <TextField
-                id='standard-helperText'
-                label='Price'
-                defaultValue=''
-                helperText='Enter price of the part'
-                className='car-input'
-                type='number'
-                name='price'
-                onChange={setForm}
-            />
-            <Button className='setup-car-button' type='submit'>
-                Modify
-            </Button>
-            <Button className='setup-car-button' onClick={close}>
-                Cancel
-            </Button>
+                <TextField
+                    id='standard-helperText'
+                    label='Bonus horse power'
+                    defaultValue=''
+                    helperText='Enter bonus horse power'
+                    className='car-input'
+                    type='number'
+                    name='bonusHorsePower'
+                    onChange={setForm}
+                />
+                <TextField
+                    id='standard-helperText'
+                    label='Price'
+                    defaultValue=''
+                    helperText='Enter price of the part'
+                    className='car-input'
+                    type='number'
+                    name='price'
+                    onChange={setForm}
+                />
+            </div>
+            <div className='modify-car-buttons-form'>
+                <Button className='setup-car-button' type='submit'>
+                    Modify
+                </Button>
+                <Button className='setup-car-button' onClick={close}>
+                    Cancel
+                </Button>
+            </div>
         </form>
     );
 };

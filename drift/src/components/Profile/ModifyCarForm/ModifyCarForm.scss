@@ -1,0 +1,19 @@
+.modify-car-form .inputs-wrapper-modify {
+    height: 390px;
+    padding-left: 45px;
+}
+.modify-car-buttons-form {
+    width: 175px;
+    margin: 0 75px;
+    .setup-car-button {
+        margin: auto;
+        display: block;
+        background-color: #ae3da1;
+        width: 190px;
+        margin-top: 20px;
+        height: 30px;
+        &:hover {
+            background-color: #6600cc;
+        }
+    }
+}
