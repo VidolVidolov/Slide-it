@@ -22,8 +22,7 @@ const Profile = ({
 }) => {
     const [setUpCarForm, setSetUpCarForm] = useState(false);
     const [modifyCarForm, setModifyCarForm] = useState(false);
-    const [bonusHP, setBonusHp] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
+
     const handleOpenSetUpForm = (e) => {
         if (setUpCarForm) {
             setSetUpCarForm(false);
@@ -45,14 +44,11 @@ const Profile = ({
             changeWeatherToNotVisible();
         }
     };
-
+    const hp = Number(car.parts.reduce((a, c) => (a += +c.bonusHorsePower), 0));
+    const price = Number(car.parts.reduce((a, c) => (a += +c.price), 0));
     useEffect(() => {
         userId && loadCarInfo(userId);
-        const hp = car.parts.reduce((a, c) => (a += c.bonusHorsePower), 0);
-        const price = car.parts.reduce((a, c) => (a += c.price), 0);
-        setTotalPrice(price + car.price);
-        setBonusHp(hp);
-    }, [loadCarInfo, userId, car.parts, car.price]);
+    }, [loadCarInfo, userId]);
 
     return (
         <div className='page-wrapper'>
@@ -68,7 +64,7 @@ const Profile = ({
                     brand={car.brand}
                     model={car.model}
                     hp={car.horsePower}
-                    bonus={bonusHP}
+                    bonus={hp}
                 />
                 <MiddleSectionAccount
                     videoLink={car.videoLink}
@@ -95,9 +91,9 @@ const Profile = ({
                     <div className='potential'>
                         Car's potential: {car.potential}
                     </div>
-                    <div>Bonus HP from parts: {bonusHP} HP</div>
+                    <div>Bonus HP from parts: {hp} HP</div>
                     <div className='car-price'>
-                        Total car price: {totalPrice} Euro
+                        Total car price: {car.price + price} Euro
                     </div>
                 </div>
             </div>
