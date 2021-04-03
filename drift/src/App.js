@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import LoggedHome from './components/LoggedHome';
 import Profile from './components/Profile';
+import CarDetails from './components/CarDetails/CarDetails';
 import './App.scss';
 
 function App({ onAuthStateChanged }) {
@@ -33,6 +34,10 @@ function App({ onAuthStateChanged }) {
                     <PrivateRoute
                         path='/profile'
                         component={Profile}
+                    ></PrivateRoute>
+                    <PrivateRoute
+                        path='/:id/details'
+                        component={CarDetails}
                     ></PrivateRoute>
                 </Switch>
             </Layout>

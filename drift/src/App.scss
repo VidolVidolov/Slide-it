@@ -46,10 +46,11 @@
 }
 
 .pseudo-side-menu {
-    display: flex;
+    // display: flex;
     flex-wrap: wrap;
     width: 345px;
     height: 117px;
+    text-align: left;
     .page-heading {
         color: white;
         font-size: 80px;

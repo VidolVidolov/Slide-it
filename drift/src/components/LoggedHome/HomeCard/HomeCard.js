@@ -12,9 +12,9 @@ const HomeCard = ({ car }) => {
             </div>
             <div className='car-info-wrapper'>
                 <p>POWER: {car.horsePower} HP</p>
-                <Link to={car.videoLink}>
-                    <p>click to see car's video</p>
-                </Link>
+                <p onClick={() => window.open(car.videoLink)} className='video-link-button'>
+                    click to see car's video
+                </p>
             </div>
             <Link to={`/${car._id}/details`}>view more</Link>
         </div>
