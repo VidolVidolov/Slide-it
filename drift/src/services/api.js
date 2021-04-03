@@ -9,4 +9,5 @@ export const carApi = {
     saveCar: (userId) => `${CAR_URL}/${userId}`,
     loadCar: (userId) => `${CAR_URL}/${userId}`,
     modifyCar: (userId) => `${CAR_URL}/${userId}/car`,
+    loadAllCars: () => `${CAR_URL}`,
 };

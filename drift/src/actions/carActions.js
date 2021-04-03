@@ -1,4 +1,9 @@
-import { SAVE_CAR, LOAD_CAR, MODIFY_CAR } from '../actionTypes/carActionTypes';
+import {
+    SAVE_CAR,
+    LOAD_CAR,
+    MODIFY_CAR,
+    LOAD_ALL_CARS,
+} from '../actionTypes/carActionTypes';
 import carService from '../services/carService';
 
 const saveCarSuccess = (car) => ({
@@ -9,6 +14,11 @@ const saveCarSuccess = (car) => ({
 const loadCarSuccess = (car) => ({
     type: LOAD_CAR,
     payload: car,
+});
+
+const loadAllCarsSuccess = (data) => ({
+    type: LOAD_ALL_CARS,
+    payload: data,
 });
 
 const modifyCarSuccess = (part) => ({
@@ -56,6 +66,21 @@ export const modifyCar = (userId, form) => async (dispatch) => {
         }
 
         dispatch(modifyCarSuccess(data));
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const loadAllCars = () => async (dispatch) => {
+    try {
+        const res = await carService.loadAllCars();
+        const data = await res.json();
+
+        if (data.error) {
+            throw { error: data.error };
+        }
+        data.sort((a, b) => b.horsePower - a.horsePower);
+        dispatch(loadAllCarsSuccess(data));
     } catch (error) {
         console.log(error);
     }

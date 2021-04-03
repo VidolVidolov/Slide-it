@@ -2,6 +2,15 @@ const express = require('express');
 const carsController = express.Router();
 const carsService = require('../services/carsService');
 
+carsController.get('/', async (req, res) => {
+    try {
+        const response = await carsService.loadAllCars();
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(404).send({ error: error.error || error.message });
+    }
+});
+
 carsController.post('/:userId', async (req, res) => {
     try {
         const userId = req.params.userId;

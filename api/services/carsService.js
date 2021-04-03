@@ -76,8 +76,35 @@ const modifyCar = async (userId, form) => {
         throw errorToThrow;
     }
 };
+
+const loadAllCars = async () => {
+    try {
+        const cars = await Car.aggregate([
+            {
+                $project: {
+                    brand: 1,
+                    model: 1,
+                    horsePower: 1,
+                    videoLink: 1,
+                    picture: 1,
+                },
+            },
+        ]);
+        return cars;
+    } catch (error) {
+        const errorToThrow = {};
+
+        error.errors
+            ? (errorToThrow.error =
+                  error.errors[Object.keys(error.errors)[0]].message)
+            : (errorToThrow.error = error.message);
+
+        throw errorToThrow;
+    }
+};
 module.exports = {
     saveCar,
     loadCar,
     modifyCar,
+    loadAllCars,
 };

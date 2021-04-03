@@ -69,9 +69,7 @@ const Profile = ({
                     parts={car.parts}
                     picture={car.picture}
                 />
-                <div className='potential'>
-                    Car's potential: {car.potential}
-                </div>
+
                 <div className='profile-buttons-setup-car'>
                     <Button
                         className='setup-car-button'
@@ -87,8 +85,14 @@ const Profile = ({
                         Modify your car
                     </Button>
                 </div>
-                <div className='car-price'>
-                    Total car price: {car.price} Euro
+                <div className='summary-car'>
+                    <div className='potential'>
+                        Car's potential: {car.potential}
+                    </div>
+                    <div>Bonus HP from parts: 120 HP</div>
+                    <div className='car-price'>
+                        Total car price: {car.price} Euro
+                    </div>
                 </div>
             </div>
         </div>
