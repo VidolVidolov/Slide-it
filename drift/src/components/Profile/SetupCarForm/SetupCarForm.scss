@@ -3,7 +3,8 @@
     width: 350px;
     border: 4px solid transparent;
     flex-direction: column;
-    height: 610px;
+    height: 630px;
+    margin-left: -45px;
     .inputs-wrapper {
         overflow-y: scroll;
         height: 440px;
@@ -22,8 +23,7 @@
     }
     h2 {
         color: white;
-        padding-bottom: 20px;
-        margin-top: -20px;
+        margin-top: 30px;
     }
     label + .MuiInput-formControl {
         color: white;

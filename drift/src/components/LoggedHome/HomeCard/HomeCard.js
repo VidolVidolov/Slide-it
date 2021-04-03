@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './HomeCard.scss';
 
 const HomeCard = ({ car }) => {
@@ -11,8 +12,11 @@ const HomeCard = ({ car }) => {
             </div>
             <div className='car-info-wrapper'>
                 <p>POWER: {car.horsePower} HP</p>
-                <p>click to see car's video</p>
+                <Link to={car.videoLink}>
+                    <p>click to see car's video</p>
+                </Link>
             </div>
+            <Link to={`/${car._id}/details`}>view more</Link>
         </div>
     );
 };

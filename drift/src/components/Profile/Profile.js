@@ -54,6 +54,10 @@ const Profile = ({
         <div className='page-wrapper'>
             <div className='pseudo-side-menu'>
                 <h1 className='page-heading'>account</h1>
+                <p className='paragraph-under-heading'>
+                    Modify or set up your own car
+                </p>
+
                 {setUpCarForm && <SetupCarForm close={handleOpenSetUpForm} />}
                 {modifyCarForm && (
                     <ModifyCarForm close={handleOpenModifyCarForm} />
