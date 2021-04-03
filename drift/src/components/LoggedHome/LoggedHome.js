@@ -3,11 +3,12 @@ import { loadAllCars } from '../../actions/carActions';
 import { useEffect } from 'react';
 import './LoggedHome.scss';
 import HomeCard from './HomeCard/HomeCard';
+import { changeWeatherToVisible } from '../../actions/userActions';
 
-const LoggedHome = ({ cars, loadAllCars }) => {
-    console.log(cars);
+const LoggedHome = ({ cars, loadAllCars, changeWeatherToVisible }) => {
     useEffect(() => {
         cars.length === 0 && loadAllCars();
+        changeWeatherToVisible();
     }, [loadAllCars]);
     return (
         <div className='page-wrapper'>
@@ -31,5 +32,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     loadAllCars,
+    changeWeatherToVisible,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoggedHome);
