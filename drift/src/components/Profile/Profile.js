@@ -22,7 +22,8 @@ const Profile = ({
 }) => {
     const [setUpCarForm, setSetUpCarForm] = useState(false);
     const [modifyCarForm, setModifyCarForm] = useState(false);
-
+    const [bonusHP, setBonusHp] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
     const handleOpenSetUpForm = (e) => {
         if (setUpCarForm) {
             setSetUpCarForm(false);
@@ -47,7 +48,11 @@ const Profile = ({
 
     useEffect(() => {
         userId && loadCarInfo(userId);
-    }, [loadCarInfo, userId]);
+        const hp = car.parts.reduce((a, c) => (a += c.bonusHorsePower), 0);
+        const price = car.parts.reduce((a, c) => (a += c.price), 0);
+        setTotalPrice(price + car.price);
+        setBonusHp(hp);
+    }, [loadCarInfo, userId, car.parts, car.price]);
 
     return (
         <div className='page-wrapper'>
@@ -63,6 +68,7 @@ const Profile = ({
                     brand={car.brand}
                     model={car.model}
                     hp={car.horsePower}
+                    bonus={bonusHP}
                 />
                 <MiddleSectionAccount
                     videoLink={car.videoLink}
@@ -89,9 +95,9 @@ const Profile = ({
                     <div className='potential'>
                         Car's potential: {car.potential}
                     </div>
-                    <div>Bonus HP from parts: 120 HP</div>
+                    <div>Bonus HP from parts: {bonusHP} HP</div>
                     <div className='car-price'>
-                        Total car price: {car.price} Euro
+                        Total car price: {totalPrice} Euro
                     </div>
                 </div>
             </div>
