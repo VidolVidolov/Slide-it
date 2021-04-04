@@ -20,7 +20,7 @@ const Register = ({ register }) => {
             e.preventDefault();
             registerValidator(form);
             await register(form);
-            history.push('/home');
+            history.push('/profile');
         } catch (error) {
             setError(error.error);
             setErrorField(error.field);
