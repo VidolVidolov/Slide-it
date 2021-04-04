@@ -12,7 +12,7 @@ The app is pretty straight forward, starting form register and login pages, lead
 For the authentication i am using Firebase , both for frontend and backend.
 For weather forecast i am using OpenWeather api.
 
-##functionalities
+#functionalities
 
 * Register user
 * Login user
