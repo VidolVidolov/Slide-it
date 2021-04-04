@@ -83,6 +83,7 @@ export const onAuthStateChanged = () => async (dispatch) => {
                 dispatch(loginSuccess(infoUser));
             } else {
                 dispatch(failPersistState());
+                localStorage.removeItem('loggedIn');
             }
         });
     } catch (error) {
