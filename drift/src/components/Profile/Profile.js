@@ -97,7 +97,8 @@ const Profile = ({
                     </div>
                     <div>Bonus HP from parts: {hp} HP</div>
                     <div className='car-price'>
-                        Total car price: {car.price + price} Euro
+                        Total car price: {Number(car.price) + Number(price)}{' '}
+                        Euro
                     </div>
                 </div>
             </div>
