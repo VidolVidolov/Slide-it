@@ -7,14 +7,16 @@ import './LoggedHome.scss';
 
 const LoggedHome = ({ cars, loadAllCars, changeWeatherToVisible }) => {
     useEffect(() => {
-        cars.length === 0 && loadAllCars();
+        loadAllCars();
         changeWeatherToVisible();
     }, [loadAllCars]);
     return (
         <div className='page-wrapper'>
             <div className='pseudo-side-menu'>
                 <h1 className='page-heading'>Home</h1>
-                <p className='paragraph-under-heading'>check out the available cars</p>
+                <p className='paragraph-under-heading'>
+                    check out the available cars
+                </p>
             </div>
             <div className='page-content'>
                 <div className='home-card-wrapper'>

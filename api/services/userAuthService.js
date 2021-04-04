@@ -3,6 +3,7 @@ const Car = require('../Models/Car');
 const bcrypt = require('bcrypt');
 const admin = require('firebase-admin');
 const saltRounds = 10;
+
 const registerUser = async ({ email, password, currentCar }) => {
     try {
         const salt = await bcrypt.genSalt(saltRounds);

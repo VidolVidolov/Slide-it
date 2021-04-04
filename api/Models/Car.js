@@ -4,7 +4,6 @@ const Car = new mongoose.Schema({
     brand: {
         type: String,
         required: true,
-        unique: true,
     },
     model: {
         type: String,
