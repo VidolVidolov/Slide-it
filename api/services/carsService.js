@@ -102,9 +102,30 @@ const loadAllCars = async () => {
         throw errorToThrow;
     }
 };
+
+const loadCarDetails = async (carId) => {
+    try {
+        const car = await Car.findById(carId).populate('parts').lean();
+
+        if (!car) {
+            throw { error: 'The car does not exist!' };
+        }
+        return car;
+    } catch (error) {
+        const errorToThrow = {};
+
+        error.errors
+            ? (errorToThrow.error =
+                  error.errors[Object.keys(error.errors)[0]].message)
+            : (errorToThrow.error = error.message);
+
+        throw errorToThrow;
+    }
+};
 module.exports = {
     saveCar,
     loadCar,
     modifyCar,
     loadAllCars,
+    loadCarDetails,
 };

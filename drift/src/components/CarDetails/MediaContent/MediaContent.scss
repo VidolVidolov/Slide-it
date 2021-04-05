@@ -1,0 +1,29 @@
+.media-content {
+    display: flex;
+    
+    height: 500px;
+    width: 100%;
+    justify-content: space-between;
+
+    .image-wrapper-details {
+        display: flex;
+        width: 560px;
+        flex-wrap: wrap;
+        .image-details {
+            margin: auto;
+            width: 550px;
+            height: 350px;
+            border: 4px solid grey;
+            border-radius: 20px;
+        }
+    }
+
+    h2 {
+        display: flex;
+        font-size: 45px;
+        text-decoration: underline overline;
+        height: 0;
+        margin: auto;
+        color: #b03da3;
+    }
+}

@@ -52,4 +52,15 @@ carsController.post('/:userId/car', async (req, res) => {
     }
 });
 
+carsController.get('/:carId/details', async (req, res) => {
+    try {
+        const carId = req.params.carId;
+
+        const response = await carsService.loadCarDetails(carId);
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(404).send({ error: error.error || error.message });
+    }
+});
+
 module.exports = carsController;
