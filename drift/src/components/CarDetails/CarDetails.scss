@@ -5,14 +5,30 @@
         font-size: 30px;
     }
 }
-.absolute-back-button{
+.absolute-back-button {
     position: absolute;
     left: 500px;
     top: 130px;
     font-size: 29px;
     cursor: pointer;
-    &:hover{
+    &:hover {
         color: #b03da3;
         font-size: 31px;
+    }
+}
+
+.absolute-add-favorites-button {
+    position: absolute;
+    left: 990px;
+    top: 780px;
+    font-size: 29px;
+    cursor: pointer;
+    &:hover {
+        color: #b03da3;
+        font-size: 31px;
+    }
+
+    span{
+        font-size: 50px;
     }
 }

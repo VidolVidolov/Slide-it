@@ -1,11 +1,14 @@
 import useFetch from '../../hooks/useFetch';
 import { BASE_URL } from '../../constants/api';
 import { convertLink } from '../../helpers/videoLinkConvertor';
-import './CarDetails.scss';
 import MediaContent from './MediaContent/MediaContent';
 import Modifications from './Modifications/Modifications';
+import { connect } from 'react-redux';
+import { userId } from '../../reducers/userReducer';
+import { addCarToFavourites } from '../../actions/userActions';
+import './CarDetails.scss';
 
-const CarDetails = ({ history }) => {
+const CarDetails = ({ history, userId, addCarToFavourites }) => {
     const id = history.location.pathname.split('/')[1];
     const url = `${BASE_URL}/cars/${id}/details`;
     const { response: car, error } = useFetch(url);
@@ -14,7 +17,14 @@ const CarDetails = ({ history }) => {
         car?.parts.reduce((a, c) => (a += +c.bonusHorsePower), 0)
     );
     const price = Number(car?.parts.reduce((a, c) => (a += +c.price), 0));
-    console.log(price);
+
+    const handleAddToFavorites = async () => {
+        try {
+            await addCarToFavourites(userId, id);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <div className='page-wrapper'>
@@ -43,9 +53,22 @@ const CarDetails = ({ history }) => {
                 >
                     Back
                 </p>
+                <p
+                    className='absolute-add-favorites-button'
+                    onClick={handleAddToFavorites}
+                >
+                    <span>&#8669;</span> add to favorites <span>&#8668;</span>
+                </p>
             </div>
         </div>
     );
 };
+const mapStateToProps = (state) => ({
+    userId: userId(state),
+});
 
-export default CarDetails;
+const mapDispatchToProps = {
+    addCarToFavourites,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CarDetails);

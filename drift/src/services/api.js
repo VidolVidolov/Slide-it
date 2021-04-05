@@ -1,8 +1,10 @@
 import { BASE_URL } from '../constants/api';
 const USER_AUTH_URL = `${BASE_URL}/users/auth`;
+const USER_URL = `${BASE_URL}/users`;
 const CAR_URL = `${BASE_URL}/cars`;
 export const userApi = {
     registerUser: () => `${USER_AUTH_URL}/register`,
+    addCarToFavourites: (userId) => `${USER_URL}/${userId}/favourites`,
 };
 
 export const carApi = {

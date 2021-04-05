@@ -111,3 +111,17 @@ export const changeLocation = (location) => async (dispatch) => {
         throw { error: error.message || error.error };
     }
 };
+
+export const addCarToFavourites = (userId, carId) => async (dispatch) => {
+    try {
+        const res = await userService.addCarToFavourites(userId, carId);
+        const data = await res.json();
+
+        if (data.error) {
+            throw { error: data.error };
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+};

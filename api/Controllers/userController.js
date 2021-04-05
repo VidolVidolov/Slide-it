@@ -1,10 +1,10 @@
 const express = require('express');
-const userAuthRouter = express.Router();
+const userRouter = express.Router();
 const emailRegex = require('../regex/emailRegex');
 const passwordRegex = require('../regex/passwordRegex');
 const userAuthService = require('../services/userAuthService');
 
-userAuthRouter.post('/auth/register', async (req, res) => {
+userRouter.post('/auth/register', async (req, res) => {
     try {
         const { email, password, repeatPassword, currentCar } = req.body;
 
@@ -48,4 +48,15 @@ userAuthRouter.post('/auth/register', async (req, res) => {
     }
 });
 
-module.exports = userAuthRouter;
+userRouter.post('/:userId/favourites', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const carId = req.body.carId;
+
+        const response = await userService.addCarToFavourites(userId, carId);
+        res.status(201).send(response);
+    } catch (error) {
+        res.status(404).send({ error: error.error || error.message });
+    }
+});
+module.exports = userRouter;
