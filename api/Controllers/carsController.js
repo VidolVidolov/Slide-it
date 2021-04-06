@@ -63,5 +63,14 @@ carsController.get('/:carId/details', async (req, res) => {
     }
 });
 
+carsController.get('/:userId/favourites', async (req, res) => {
+    try {
+        const userId = req.params.userId;
 
+        const response = await carsService.loadAllFavourites(userId);
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(404).send({ error: error.error || error.message });
+    }
+});
 module.exports = carsController;

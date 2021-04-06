@@ -38,7 +38,7 @@ const Layout = ({
                                     </div>
                                 </Link>
                                 <Link to='/favourites'>
-                                    <div className='left-part-header-item'>
+                                    <div className='left-part-right-header-item'>
                                         Favourites
                                     </div>
                                 </Link>

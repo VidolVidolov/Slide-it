@@ -1,0 +1,11 @@
+.home-card-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 30px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 0.1px;
+    }
+}

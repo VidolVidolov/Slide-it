@@ -1,26 +1,32 @@
 import { connect } from 'react-redux';
-import { loadAllCars } from '../../actions/carActions';
+import { loadAllFavourites } from '../../actions/carActions';
 import { useEffect } from 'react';
 import HomeCard from '../../shared/HomeCard';
 import { changeWeatherToVisible } from '../../actions/userActions';
-import './LoggedHome.scss';
+import { userId } from '../../reducers/userReducer';
+import './Favourites.scss';
 
-const LoggedHome = ({ cars, loadAllCars, changeWeatherToVisible }) => {
+const LoggedHome = ({
+    favourites,
+    loadAllFavourites,
+    changeWeatherToVisible,
+    userId,
+}) => {
     useEffect(() => {
-        loadAllCars();
+        userId && loadAllFavourites(userId);
         changeWeatherToVisible();
-    }, [loadAllCars]);
+    }, [loadAllFavourites, userId]);
     return (
         <div className='page-wrapper'>
             <div className='pseudo-side-menu'>
-                <h1 className='page-heading'>Home</h1>
+                <h1 className='page-heading'>Favourites</h1>
                 <p className='paragraph-under-heading'>
-                    check out the available cars
+                    See all your favourite cars in one place
                 </p>
             </div>
             <div className='page-content'>
                 <div className='home-card-wrapper'>
-                    {cars.map((x) => (
+                    {favourites.map((x) => (
                         <HomeCard car={x} />
                     ))}
                 </div>
@@ -30,11 +36,12 @@ const LoggedHome = ({ cars, loadAllCars, changeWeatherToVisible }) => {
 };
 
 const mapStateToProps = (state) => ({
-    cars: state.allCars,
+    favourites: state.favouriteCars,
+    userId: userId(state),
 });
 
 const mapDispatchToProps = {
-    loadAllCars,
+    loadAllFavourites,
     changeWeatherToVisible,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoggedHome);

@@ -9,5 +9,6 @@ export default {
     modifyCar: (userId, form) =>
         requester.post(carApi.modifyCar(userId), { ...form }),
     loadAllCars: () => requester.get(carApi.loadAllCars()),
-   
+    loadAllFavourites: (userId) =>
+        requester.get(carApi.loadAllFavourites(userId)),
 };

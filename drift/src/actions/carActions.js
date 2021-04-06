@@ -3,6 +3,7 @@ import {
     LOAD_CAR,
     MODIFY_CAR,
     LOAD_ALL_CARS,
+    LOAD_ALL_FAVOURITE_CARS
 } from '../actionTypes/carActionTypes';
 import carService from '../services/carService';
 
@@ -24,6 +25,10 @@ const loadAllCarsSuccess = (data) => ({
 const modifyCarSuccess = (part) => ({
     type: MODIFY_CAR,
     payload: part,
+});
+const loadAllFavouritesSuccess = (data) => ({
+    type: LOAD_ALL_FAVOURITE_CARS,
+    payload: data,
 });
 
 export const saveCar = (userId, form) => async (dispatch) => {
@@ -86,4 +91,17 @@ export const loadAllCars = () => async (dispatch) => {
     }
 };
 
+export const loadAllFavourites = (userId) => async (dispatch) => {
+    try {
+        const res = await carService.loadAllFavourites(userId);
+        const data = await res.json();
 
+        if (data.error) {
+            throw { error: data.error };
+        }
+        data.sort((a, b) => b.potential - a.potential);
+        dispatch(loadAllFavouritesSuccess(data));
+    } catch (error) {
+        console.log(error);
+    }
+};

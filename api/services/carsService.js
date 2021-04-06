@@ -122,10 +122,40 @@ const loadCarDetails = async (carId) => {
         throw errorToThrow;
     }
 };
+
+const loadAllFavourites = async (userId) => {
+    try {
+        const cars = await User.findById(userId)
+            .populate({
+                path: 'wishCars',
+                select: {
+                    brand: 1,
+                    model: 1,
+                    horsePower: 1,
+                    videoLink: 1,
+                    picture: 1,
+                },
+            })
+            .lean();
+
+        return cars.wishCars;
+    } catch (error) {
+        const errorToThrow = {};
+
+        error.errors
+            ? (errorToThrow.error =
+                  error.errors[Object.keys(error.errors)[0]].message)
+            : (errorToThrow.error = error.message);
+
+        throw errorToThrow;
+    }
+};
+
 module.exports = {
     saveCar,
     loadCar,
     modifyCar,
     loadAllCars,
     loadCarDetails,
+    loadAllFavourites,
 };

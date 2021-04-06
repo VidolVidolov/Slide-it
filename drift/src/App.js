@@ -11,6 +11,7 @@ import Register from './components/Register';
 import LoggedHome from './components/LoggedHome';
 import Profile from './components/Profile';
 import CarDetails from './components/CarDetails/CarDetails';
+import Favourites from './components/Favourites/Favourites';
 import './App.scss';
 
 function App({ onAuthStateChanged }) {
@@ -34,6 +35,10 @@ function App({ onAuthStateChanged }) {
                     <PrivateRoute
                         path='/profile'
                         component={Profile}
+                    ></PrivateRoute>
+                    <PrivateRoute
+                        path='/favourites'
+                        component={Favourites}
                     ></PrivateRoute>
                     <PrivateRoute
                         path='/:id/details'

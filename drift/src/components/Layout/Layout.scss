@@ -60,7 +60,19 @@
                     padding-right: 24px;
                 }
             }
+            .left-part-right-header-item {
+                color: white;
+                padding-right: 30px;
+                text-decoration: none;
+                cursor: pointer;
+                &:hover {
+                    color: #b03da3;
+                    font-size: 18px;
+                    padding-right: 22px;
+                }
+            }
         }
+        
 
         .account-links {
             display: flex;
