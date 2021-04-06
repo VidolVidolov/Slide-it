@@ -20,5 +20,5 @@ For weather forecast i am using OpenWeather api.
 * User can modify their cars from account page
 * See datails for particular car
 * Weather forecast for your location by endering your location in certain field
-
+* User can add certain cars to his favourite list and see them in Favourites page
 
