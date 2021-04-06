@@ -6,6 +6,8 @@ import {
     CHANGE_LOCATION,
     SHOW_WEATHER,
     HIDE_WEATHER,
+    ADD_TO_FAVOURITES,
+    LOAD_USER_FAVOURITES,
 } from '../actionTypes/userActionTypes';
 import userService from '../services/userService';
 import { auth } from '../utils/firebase';
@@ -37,6 +39,15 @@ export const changeWeatherToVisible = () => ({
 
 export const changeWeatherToNotVisible = () => ({
     type: HIDE_WEATHER,
+});
+
+const addCarToFavouritesSuccess = (carId) => ({
+    type: ADD_TO_FAVOURITES,
+    payload: carId,
+});
+const getUserFavouritesSuccess = (data) => ({
+    type: LOAD_USER_FAVOURITES,
+    payload: data,
 });
 
 export const register = (filledForm) => async (dispatch) => {
@@ -78,13 +89,15 @@ export const onAuthStateChanged = () => async (dispatch) => {
                 const idToken = await user.getIdToken();
                 const tokenResult = await auth.currentUser.getIdTokenResult();
                 const id = tokenResult.claims.id;
-                const infoUser = { email: user.email, idToken, id };
                 localStorage.setItem('loggedIn', 'true');
+                const infoUser = { email: user.email, idToken, id };
                 dispatch(loginSuccess(infoUser));
-            } else {
-                dispatch(failPersistState());
-                localStorage.removeItem('loggedIn');
+
+                return;
             }
+
+            dispatch(failPersistState());
+            localStorage.removeItem('loggedIn');
         });
     } catch (error) {
         throw { error: error.error || error.message };
@@ -121,6 +134,21 @@ export const addCarToFavourites = (userId, carId) => async (dispatch) => {
             throw { error: data.error };
         }
 
+        dispatch(addCarToFavouritesSuccess(data.carId));
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const getUserFavourites = (userId) => async (dispatch) => {
+    try {
+        const data = await userService.getUserFavourites(userId);
+        console.log(data);
+        const favourites = await data.json();
+        if (data.error) {
+            throw { error: data.error };
+        }
+        dispatch(getUserFavouritesSuccess(favourites));
     } catch (error) {
         console.log(error);
     }

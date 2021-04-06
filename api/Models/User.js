@@ -14,7 +14,7 @@ const User = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Car',
     },
-    whishCars: [
+    wishCars: [
         {
             type: mongoose.Types.ObjectId,
             ref: 'Car',

@@ -3,12 +3,23 @@ import { BASE_URL } from '../../constants/api';
 import { convertLink } from '../../helpers/videoLinkConvertor';
 import MediaContent from './MediaContent/MediaContent';
 import Modifications from './Modifications/Modifications';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { userId } from '../../reducers/userReducer';
-import { addCarToFavourites } from '../../actions/userActions';
+import { userId, userFavourites } from '../../reducers/userReducer';
+import {
+    addCarToFavourites,
+    getUserFavourites,
+} from '../../actions/userActions';
 import './CarDetails.scss';
 
-const CarDetails = ({ history, userId, addCarToFavourites }) => {
+const CarDetails = ({
+    history,
+    userId,
+    addCarToFavourites,
+    favourites,
+    getUserFavourites,
+}) => {
+    const [disabledButton, setDisabledButton] = useState(false);
     const id = history.location.pathname.split('/')[1];
     const url = `${BASE_URL}/cars/${id}/details`;
     const { response: car, error } = useFetch(url);
@@ -21,11 +32,16 @@ const CarDetails = ({ history, userId, addCarToFavourites }) => {
     const handleAddToFavorites = async () => {
         try {
             await addCarToFavourites(userId, id);
+            setDisabledButton(true);
         } catch (error) {
             console.log(error);
         }
     };
-
+    useEffect(() => {
+        favourites.length !== 0
+            ? favourites.includes(id) && setDisabledButton(true)
+            : getUserFavourites(userId);
+    }, [favourites, userId, id]);
     return (
         <div className='page-wrapper'>
             <div className='pseudo-side-menu'>
@@ -54,8 +70,10 @@ const CarDetails = ({ history, userId, addCarToFavourites }) => {
                     Back
                 </p>
                 <p
-                    className='absolute-add-favorites-button'
-                    onClick={handleAddToFavorites}
+                    className={`${
+                        disabledButton && 'disabled-favourites'
+                    } absolute-add-favorites-button`}
+                    onClick={!disabledButton && handleAddToFavorites}
                 >
                     <span>&#8669;</span> add to favorites <span>&#8668;</span>
                 </p>
@@ -65,10 +83,12 @@ const CarDetails = ({ history, userId, addCarToFavourites }) => {
 };
 const mapStateToProps = (state) => ({
     userId: userId(state),
+    favourites: userFavourites(state),
 });
 
 const mapDispatchToProps = {
     addCarToFavourites,
+    getUserFavourites,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarDetails);

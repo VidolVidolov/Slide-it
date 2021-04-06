@@ -3,6 +3,7 @@ const userRouter = express.Router();
 const emailRegex = require('../regex/emailRegex');
 const passwordRegex = require('../regex/passwordRegex');
 const userAuthService = require('../services/userAuthService');
+const userService = require('../services/userService');
 
 userRouter.post('/auth/register', async (req, res) => {
     try {
@@ -48,11 +49,21 @@ userRouter.post('/auth/register', async (req, res) => {
     }
 });
 
+userRouter.get('/:userId/favourites', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        
+        const response = await userService.getUserFavourites(userId);
+        res.status(201).send(response);
+    } catch (error) {
+        res.status(404).send({ error: error.error || error.message });
+    }
+});
+
 userRouter.post('/:userId/favourites', async (req, res) => {
     try {
         const userId = req.params.userId;
         const carId = req.body.carId;
-
         const response = await userService.addCarToFavourites(userId, carId);
         res.status(201).send(response);
     } catch (error) {

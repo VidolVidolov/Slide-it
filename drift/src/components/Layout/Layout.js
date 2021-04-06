@@ -37,6 +37,11 @@ const Layout = ({
                                         Account
                                     </div>
                                 </Link>
+                                <Link to='/favourites'>
+                                    <div className='left-part-header-item'>
+                                        Favourites
+                                    </div>
+                                </Link>
                                 <div className='left-part-header-item-name'>
                                     Username &#187;&#187;
                                     <p>{email}</p>

@@ -18,6 +18,7 @@
 }
 
 .absolute-add-favorites-button {
+    color: #b03da3;
     position: absolute;
     left: 990px;
     top: 780px;
@@ -28,7 +29,16 @@
         font-size: 31px;
     }
 
-    span{
+    span {
         font-size: 50px;
+    }
+}
+
+.disabled-favourites {
+    color: white 0.7;
+    cursor: not-allowed;
+    &:hover {
+        color: white;
+        font-size: 29px;
     }
 }

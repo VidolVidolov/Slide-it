@@ -5,6 +5,7 @@ const CAR_URL = `${BASE_URL}/cars`;
 export const userApi = {
     registerUser: () => `${USER_AUTH_URL}/register`,
     addCarToFavourites: (userId) => `${USER_URL}/${userId}/favourites`,
+    getUserFavourites: (userId) => `${USER_URL}/${userId}/favourites`,
 };
 
 export const carApi = {
