@@ -3,7 +3,7 @@ import {
     LOAD_CAR,
     MODIFY_CAR,
     LOAD_ALL_CARS,
-    LOAD_ALL_FAVOURITE_CARS
+    LOAD_ALL_FAVOURITE_CARS,
 } from '../actionTypes/carActionTypes';
 import carService from '../services/carService';
 

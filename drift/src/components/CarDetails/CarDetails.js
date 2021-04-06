@@ -56,13 +56,17 @@ const CarDetails = ({
                     picture={car?.picture}
                     model={car?.model}
                 />
-                {car?.parts && <Modifications parts={car.parts} />}
+                {car?.parts && (
+                    <Modifications
+                        parts={car.parts}
+                        potential={car.potential}
+                    />
+                )}
                 <div className='final-info-details'>
                     <h2>Price: {Number(car?.price) + price} Euro</h2>
                     <h2>Stock HP: {car?.horsePower} HP</h2>
                     <h2>Current HP: {Number(car?.horsePower) + hp} HP</h2>
                 </div>
-
                 <p
                     className='absolute-back-button'
                     onClick={(e) => history.push('/')}

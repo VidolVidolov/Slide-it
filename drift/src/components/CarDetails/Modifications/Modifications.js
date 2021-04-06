@@ -1,5 +1,5 @@
 import './Modifications.scss';
-const Modifications = ({ parts }) => {
+const Modifications = ({ parts, potential }) => {
     return (
         <div className='car-info-details'>
             <h3>Modifications</h3>
@@ -18,6 +18,7 @@ const Modifications = ({ parts }) => {
                     </ul>
                 )}
             </div>
+            <h2>Potential: {potential}</h2>
         </div>
     );
 };

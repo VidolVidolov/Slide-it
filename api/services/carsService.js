@@ -87,6 +87,7 @@ const loadAllCars = async () => {
                     horsePower: 1,
                     videoLink: 1,
                     picture: 1,
+                    potential: 1,
                 },
             },
         ]);
@@ -134,6 +135,7 @@ const loadAllFavourites = async (userId) => {
                     horsePower: 1,
                     videoLink: 1,
                     picture: 1,
+                    potential: 1,
                 },
             })
             .lean();
