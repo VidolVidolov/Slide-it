@@ -21,7 +21,7 @@ const LoggedHome = ({ cars, loadAllCars, changeWeatherToVisible }) => {
             <div className='page-content'>
                 <div className='home-card-wrapper'>
                     {cars.map((x) => (
-                        <HomeCard car={x} />
+                        <HomeCard car={x} key={x._id}/>
                     ))}
                 </div>
             </div>

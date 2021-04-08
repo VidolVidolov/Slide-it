@@ -77,7 +77,7 @@ const CarDetails = ({
                     className={`${
                         disabledButton && 'disabled-favourites'
                     } absolute-add-favorites-button`}
-                    onClick={!disabledButton && handleAddToFavorites}
+                    onClick={!disabledButton ? handleAddToFavorites : undefined}
                 >
                     <span>&#8669;</span> add to favorites <span>&#8668;</span>
                 </p>

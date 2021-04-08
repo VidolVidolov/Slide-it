@@ -16,7 +16,7 @@ const MiddleSectionAccount = ({ parts, picture, videoLink }) => {
                 ) : (
                     <ul className='parts-and-modifications'>
                         {parts.map((x) => (
-                            <li>
+                            <li key={x._id}>
                                 Brand: {x.brand} &rarr; Part: {x.type} &rarr;
                                 Price: {x.price} Euro &rarr; +HP:{' '}
                                 {x.bonusHorsePower}
