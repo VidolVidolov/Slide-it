@@ -1,5 +1,5 @@
 const express = require('express');
-// const config = require('./config/expressConfig');
+const config = require('./config/expressConfig');
 const app = express();
 require('./config/mongoose')();
 const cors = require('cors');
@@ -17,6 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(router);
 
-app.listen(process.env.NODE_ENV || 5001, () =>
-    console.log(`SERVER LISTENING ON PORT ${5001}...`)
+app.listen(config.PORT, () =>
+    console.log(`SERVER LISTENING ON PORT ${config.PORT}...`)
 );
