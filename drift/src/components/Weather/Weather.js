@@ -11,7 +11,7 @@ const Weather = ({ location, changeLocation, showWeather }) => {
     let buffer = '';
     const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
     const { response: weather, error } = useFetch(url);
-    console.log(error);
+   
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();

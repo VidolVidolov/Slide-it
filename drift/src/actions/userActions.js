@@ -143,7 +143,7 @@ export const addCarToFavourites = (userId, carId) => async (dispatch) => {
 export const getUserFavourites = (userId) => async (dispatch) => {
     try {
         const data = await userService.getUserFavourites(userId);
-        console.log(data);
+        
         const favourites = await data.json();
         if (data.error) {
             throw { error: data.error };
