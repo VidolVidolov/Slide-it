@@ -7,7 +7,7 @@ const config = {
         PORT: process.env.NODE_ENV || 4000,
     },
     production: {
-        PORT: process.env.NODE_ENV || 80,
+        PORT: 80,
     },
 };
 module.exports = config[environment];

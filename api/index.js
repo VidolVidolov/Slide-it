@@ -17,4 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(router);
 
-app.listen(config.PORT, () => console.log(`SERVER LISTENING ON PORT ${config.PORT}...`));
+app.listen(process.env.NODE_ENV || config.PORT, () =>
+    console.log(`SERVER LISTENING ON PORT ${config.PORT}...`)
+);
