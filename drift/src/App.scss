@@ -85,3 +85,34 @@
         color: white;
     }
 }
+
+@media only screen and (max-width: 1919px) {
+    .page-content {
+        width: 900px;
+        padding: 0 20px 20px 20px;
+        height: 732px;
+    }
+    .home-card-wrapper {
+        width: 721px;
+        margin: auto;
+    }
+    .media-content {
+        width: 800px;
+        h2 {
+            font-size: 30px;
+        }
+    }
+    .media-content .image-wrapper-details {
+        width: 250px;
+    }
+
+    .final-info-details {
+        width: 382px;
+    }
+    .car-info-details h2 {
+        margin: 0;
+    }
+    .absolute-add-favorites-button {
+        left: 775px;
+    }
+}
