@@ -23,4 +23,5 @@ For weather forecast i am using OpenWeather api.
 * User can add certain cars to his favourite list and see them in Favourites page
 
 The applications backend and frontend are deployed.
+
 Link to the app HERE: https://slide-it-9c6bd.web.app/
