@@ -1,8 +1,5 @@
 # Slide-it
-React Project for Softuni Exam
-
-The purpose of this project is for taking the exam for my module at Software university and 
-eventual future interviews.
+Personal Project
 
 For the current app I am using the MERN stack.
 The idea for the for the application is just gathering all people who like cars into one app and posting their vehicles to be seen by other entusiasts.
