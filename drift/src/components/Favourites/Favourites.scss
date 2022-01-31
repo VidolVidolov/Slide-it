@@ -1,5 +1,7 @@
 .home-card-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    row-gap: 33px;
     justify-content: space-between;
     width: 100%;
     padding-top: 30px;

@@ -50,24 +50,26 @@ const Layout = ({
                         )}
                     </div>
                     <div className='right-part-header'>
-                        <Link to='#' className='right-part-header-item'>
-                            <div>Search</div>
-                        </Link>
                         {email !== '' ? (
-                            <div
-                                className='right-part-header-item'
-                                onClick={handleLogOut}
-                            >
-                                Logout
+                            <>
+                                <Link to='#' className='right-part-header-item'>
+                                    <div>Search</div>
+                                </Link>
+                                <div
+                                    className='right-part-header-item'
+                                    onClick={handleLogOut}
+                                >
+                                    Logout
                             </div>
+                            </>
                         ) : (
-                            <Link
-                                to='/login'
-                                className='right-part-header-item'
-                            >
-                                <div>Login</div>
-                            </Link>
-                        )}
+                                <Link
+                                    to='/login'
+                                    className='right-part-header-item'
+                                >
+                                    <div>Login</div>
+                                </Link>
+                            )}
                     </div>
                 </div>
             </header>
