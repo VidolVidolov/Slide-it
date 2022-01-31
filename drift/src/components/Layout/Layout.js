@@ -3,9 +3,10 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { showWeather, userEmail } from '../../reducers/userReducer';
 import { logout, changeWeatherToVisible } from '../../actions/userActions';
-import './Layout.scss';
 import Weather from '../Weather';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import './Layout.scss';
+import SearchBar from '../SearchBar';
 
 const Layout = ({
     children,
@@ -14,11 +15,17 @@ const Layout = ({
     showWeather,
     changeWeatherToVisible,
 }) => {
+    const [showSearchBar, setShowSearchBar] = useState(false);
     const history = useHistory();
     const handleLogOut = async () => {
         await logout();
         history.push('/');
     };
+
+    const handleSearchAppear = () => {
+        showSearchBar ? setShowSearchBar(false) : setShowSearchBar(true);
+    }
+
     useEffect(() => {
         email && changeWeatherToVisible();
     }, [changeWeatherToVisible, email]);
@@ -52,15 +59,18 @@ const Layout = ({
                     <div className='right-part-header'>
                         {email !== '' ? (
                             <>
-                                <Link to='#' className='right-part-header-item'>
-                                    <div>Search</div>
-                                </Link>
                                 <div
                                     className='right-part-header-item'
                                     onClick={handleLogOut}
                                 >
                                     Logout
-                            </div>
+                                </div>
+                                <div className='right-part-header-item' onClick={handleSearchAppear}>
+                                    {showSearchBar
+                                        ? <div>Hide SearchBar</div>
+                                        : <div>Show SearchBar</div>
+                                    }
+                                </div>
                             </>
                         ) : (
                                 <Link
@@ -70,6 +80,7 @@ const Layout = ({
                                     <div>Login</div>
                                 </Link>
                             )}
+                        {showSearchBar && <SearchBar />}
                     </div>
                 </div>
             </header>
