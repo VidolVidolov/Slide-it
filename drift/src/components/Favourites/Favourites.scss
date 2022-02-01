@@ -1,13 +1,19 @@
 .home-card-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
     row-gap: 33px;
-    justify-content: space-between;
+    justify-items: center;
     width: 100%;
     padding-top: 30px;
     flex-wrap: wrap;
     overflow-y: scroll;
     &::-webkit-scrollbar {
         width: 0.1px;
+    }
+}
+
+@media only screen and (max-width: 1919px) {
+    .home-card-wrapper {
+        row-gap: unset;
     }
 }

@@ -93,7 +93,6 @@
         height: 732px;
     }
     .home-card-wrapper {
-        width: 721px;
         margin: auto;
     }
     .media-content {
@@ -114,5 +113,15 @@
     }
     .absolute-add-favorites-button {
         left: 775px;
+    }
+
+    .pseudo-side-menu {
+        .page-heading {
+            font-size: 60px;
+            height: unset;
+        }
+        .paragraph-under-heading {
+            font-size: 16px;
+        }
     }
 }

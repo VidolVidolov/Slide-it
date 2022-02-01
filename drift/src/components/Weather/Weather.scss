@@ -61,11 +61,11 @@
             color: white;
             width: 200px;
         }
-        .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+        .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
             border-color: #b03da3;
         }
     }
-    
+
     form {
         width: 336px;
         height: 130px;
@@ -86,4 +86,32 @@
 
 .hidden-weather {
     visibility: hidden;
+}
+
+@media only screen and (max-width: 1919px) {
+    .weather-content {
+        width: 350px;
+        padding: 5px 20px 0;
+        h2 {
+            font-size: 25px;
+        }
+        h3 {
+            margin: 0;
+
+            span {
+                font-size: 18px;
+            }
+        }
+        .weather-icon {
+            width: 100px;
+            height: 100px;
+        }
+        p {
+            font-size: 18px;
+        }
+
+        .message-weather {
+            font-size: 25px;
+        }
+    }
 }
