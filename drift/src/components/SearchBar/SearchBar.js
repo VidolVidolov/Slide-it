@@ -1,11 +1,16 @@
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import './SearchBar.scss';
 import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { searchedCars } from '../../actions/userActions';
+import './SearchBar.scss';
 
-const SearchBar = () => {
+const SearchBar = ({ searchedCars }) => {
     const [input, setInput] = useState(false);
-    
+
+    const handleSearch = async (e) => {
+        await searchedCars(e.target.value);
+    }
+
     useEffect(() => {
         setInput(true);
 
@@ -14,17 +19,19 @@ const SearchBar = () => {
 
     return (
         <div className={`search-bar-wrapper ${input && 'full-search-bar'}`}>
-            <TextField id="outlined-basic" label="Search..." variant="outlined" className='search-input' />
-            <Button
-                variant='contained'
-                color='primary'
-                className='button-search'
-                type='submit'
-            >
-                SEARCH
-            </Button>
+            <TextField
+                id="outlined-basic"
+                label="Search..."
+                variant="outlined"
+                className='search-input'
+                name='search'
+                onChange={e => handleSearch(e)} />
         </div>
     )
 }
 
-export default SearchBar;
+const mapDispatchToProps = {
+    searchedCars
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);

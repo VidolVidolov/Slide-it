@@ -4,7 +4,7 @@
     margin-right: 30px;
     color: white;
     animation-direction: reverse;
-    width: 0%;
+    width: 100px;
     transition: width 0.5s;
     transition-timing-function: ease-in;
 
@@ -50,5 +50,5 @@
 }
 
 .full-search-bar {
-    width: 330px;
+    width: 250px;
 }

@@ -8,6 +8,7 @@ import {
     HIDE_WEATHER,
     ADD_TO_FAVOURITES,
     LOAD_USER_FAVOURITES,
+    LOAD_SEARCHED_CARS
 } from '../actionTypes/userActionTypes';
 import userService from '../services/userService';
 import { auth } from '../utils/firebase';
@@ -48,6 +49,11 @@ const addCarToFavouritesSuccess = (carId) => ({
 const getUserFavouritesSuccess = (data) => ({
     type: LOAD_USER_FAVOURITES,
     payload: data,
+});
+
+const searchedCarsSuccess = (data) => ({
+    type: LOAD_SEARCHED_CARS,
+    payload: data
 });
 
 export const register = (filledForm) => async (dispatch) => {
@@ -143,12 +149,20 @@ export const addCarToFavourites = (userId, carId) => async (dispatch) => {
 export const getUserFavourites = (userId) => async (dispatch) => {
     try {
         const data = await userService.getUserFavourites(userId);
-        
+
         const favourites = await data.json();
         if (data.error) {
             throw { error: data.error };
         }
         dispatch(getUserFavouritesSuccess(favourites));
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const searchedCars = (searchWord) => async (dispatch) => {
+    try {
+        dispatch(searchedCarsSuccess(searchWord));
     } catch (error) {
         console.log(error);
     }
